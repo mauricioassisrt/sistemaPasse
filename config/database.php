@@ -63,12 +63,17 @@ return [
         ],
         'mysql-externo2' => [
             'driver' => 'mysql',
-            'host' => 'nautilus.tk',
-            'port' =>  '3306',
-            'database' => 'nautilus_database',
-            'username' => 'nautilus_database',
-            'password' =>  'nautilus_database',
-
+            'host' => env('DB_HOST', 'nautilus.tk'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'nautilus_database'),
+            'username' => env('DB_USERNAME', 'nautilus_database'),
+            'password' => env('DB_PASSWORD', 'nautilus_database'),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
         ],
         'pgsql' => [
             'driver' => 'pgsql',
