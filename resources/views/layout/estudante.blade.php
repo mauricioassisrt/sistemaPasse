@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="pt-BR">
 
 <head>
@@ -11,9 +7,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Passe Livre| Startup</title>
-    <link rel="shortcut icon" href="/img/o.png">
-    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="shortcut icon" href="img/o.png">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -184,7 +180,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="/js/app.js"></script>
+    <script src="js/app.js"></script>
     <!-- Jquery Validation -->
     <script src="js/jquery.validate.min.js"></script>
     <script type="text/javascript">
