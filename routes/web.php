@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+//firebase test
 Route::get('/test', 'FirebaseController@index');
+//
+
 Route::resource('usuarios', 'UserController')->names('user')->parameters(['usuarios' => 'user']);
 Route::resource('estudante', 'EstudanteController')->names('estudante')->parameters(['estudante' => 'estudante']);
 
@@ -44,21 +48,10 @@ Route::resource('estudante', 'EstudanteController')->names('estudante')->paramet
 // |        | GET|HEAD  | usuarios/{user}/edit       | user.edit         | App\Http\Controllers\UserController@edit         | web        |
 // +--------+-----------+----------------------------+-------------------+--------------------------------------------------+------------+
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('test1', function () {
-    //   dd(Config::get('mail'));
-    dd(Log::debug('An informational message.'));
-});
 
 /// MAIL
-
-Route::get('sendbasicemail', 'MailController@basic_email');
-Route::get('sendhtmlemail', 'MailController@html_email');
-Route::get('sendattachmentemail', 'MailController@attachment_email');
-
 Route::get('send-mail', function () {
 
     $details = [
