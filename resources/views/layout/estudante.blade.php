@@ -8,7 +8,6 @@
 
     <title>Passe Livre| Startup</title>
     <link rel="shortcut icon" href="img/o.png">
-    <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 
@@ -28,7 +27,7 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
                 <a class="nav-link" href="/../logout">
-                    <i class="fas fa-sign-in-alt"></i>
+                    <i class="fa fa-sign-in-alt"></i>
 
                 </a>
                 <!-- Notifications Dropdown Menu -->
