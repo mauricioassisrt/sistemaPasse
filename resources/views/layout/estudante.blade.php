@@ -8,7 +8,10 @@
 
     <title>Passe Livre| Startup</title>
     <link rel="shortcut icon" href="img/o.png">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -27,7 +30,7 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
                 <a class="nav-link" href="/../logout">
-                    <i class="fa fa-sign-in-alt"></i>
+                    <i class="fas fa-sign-in-alt"></i>
 
                 </a>
                 <!-- Notifications Dropdown Menu -->
