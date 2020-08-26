@@ -49,6 +49,7 @@ Route::resource('estudante', 'EstudanteController')->names('estudante')->paramet
 // +--------+-----------+----------------------------+-------------------+--------------------------------------------------+------------+
 
 Route::get('consultar', 'EstudanteController@consultarSituacao')->name('consultar.situacao');
+Route::post('possuiCpf', 'EstudanteController@possuiCpf')->name('possui.cpf');
 
 
 /// MAIL

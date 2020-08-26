@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="img/o.png">
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/select2.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
 </head>
@@ -163,13 +164,48 @@
     <script src="js/app.js"></script>
     <!-- Jquery Validation -->
     <script src="js/jquery.validate.min.js"></script>
+    <!-- SELECT -->
+    <script src="js/select2.full.min.js"></script>
+    <!-- INPUT MASK  -->
+    <script src="js/jquery.inputmask.bundle.min.js"></script>
+    <!-- DATA RANGE PICKER  -->
+    <script src="js/daterangepicker.js"></script>
+
+
     <script type="text/javascript">
-        $(document).ready(function () {
-          $.validator.setDefaults({
-            submitHandler: function () {
-              alert( "Form successful submitted!" );
-            }
-          });
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+              theme: 'bootstrap4'
+            })
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+              timePicker: true,
+              timePickerIncrement: 30,
+              locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+              }
+            })
+
+
+
+
+
+          }),
+
           $('#quickForm').validate({
             rules: {
                 consultaCPF: {
@@ -190,6 +226,18 @@
                 required: "Informe um valor",
 
               },
+              nomeAluno:{
+                required: "Informe um nome para o aluno",
+              },
+              responsavel:{
+                required: "Informe um nome para o responsável ",
+              },
+              naturalidade:{
+                required: "Informe uma cidade ",
+              },
+              telefone:{
+                required: "Informe um telefone ",
+              },
 
             },
             errorElement: 'span',
@@ -206,6 +254,7 @@
           });
         });
     </script>
+
 </body>
 
 </html>

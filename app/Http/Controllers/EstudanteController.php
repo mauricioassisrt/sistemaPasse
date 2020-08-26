@@ -88,4 +88,9 @@ class EstudanteController extends Controller
     {
         return view('estudante.consultar');
     }
+    public function possuiCpf(Request $request)
+    {
+        dd($request);
+        return view('estudante.cpf');
+    }
 }
