@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 //firebase test
 Route::get('/test', 'FirebaseController@index');
@@ -48,7 +48,7 @@ Route::resource('estudante', 'EstudanteController')->names('estudante')->paramet
 // |        | GET|HEAD  | usuarios/{user}/edit       | user.edit         | App\Http\Controllers\UserController@edit         | web        |
 // +--------+-----------+----------------------------+-------------------+--------------------------------------------------+------------+
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('consultar', 'EstudanteController@consultarSituacao')->name('consultar.situacao');
 
 
 /// MAIL

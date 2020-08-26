@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class EstudanteController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -81,5 +83,9 @@ class EstudanteController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function consultarSituacao(Request $request)
+    {
+        return view('estudante.consultar');
     }
 }
