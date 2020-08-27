@@ -15,15 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', function () {
-    return view('index');
-});
-//firebase test
-Route::get('/test', 'FirebaseController@index');
-//
 
-Route::resource('usuarios', 'UserController')->names('user')->parameters(['usuarios' => 'user']);
-Route::resource('estudante', 'EstudanteController')->names('estudante')->parameters(['estudante' => 'estudante']);
+
 
 // +--------+-----------+----------------------------+-------------------+--------------------------------------------------+------------+
 // | Domain | Method    | URI                        | Name              | Action                                           | Middleware |
@@ -47,20 +40,24 @@ Route::resource('estudante', 'EstudanteController')->names('estudante')->paramet
 // |        | PUT|PATCH | usuarios/{user}            | user.update       | App\Http\Controllers\UserController@update       | web        |
 // |        | GET|HEAD  | usuarios/{user}/edit       | user.edit         | App\Http\Controllers\UserController@edit         | web        |
 // +--------+-----------+----------------------------+-------------------+--------------------------------------------------+------------+
-
+//ROTA USUARIO
+Route::resource('usuarios', 'UserController')->names('user')->parameters(['usuarios' => 'user']);
+//ROTA ESTUDANTE
+Route::resource('estudante', 'EstudanteController')->names('estudante')->parameters(['estudante' => 'estudante']);
 Route::get('consultar', 'EstudanteController@consultarSituacao')->name('consultar.situacao');
 Route::post('possuiCpf', 'EstudanteController@possuiCpf')->name('possui.cpf');
+Route::post('NaoPossuiCpf', 'EstudanteController@naoPossuiCpf')->name('nao.possui.cpf');
 
 
 /// MAIL
-Route::get('send-mail', function () {
+// Route::get('send-mail', function () {
 
-    $details = [
-        'title' => 'Mail from ItSolutionStuff.com',
-        'body' => 'This is for testing email using smtp'
-    ];
+//     $details = [
+//         'title' => 'Mail from ItSolutionStuff.com',
+//         'body' => 'This is for testing email using smtp'
+//     ];
 
-    \Mail::to('mauricioassisrt@gmail.com')->send(new \App\Mail\MyTestMail($details));
+//     \Mail::to('mauricioassisrt@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
-    dd("Email is Sent.");
-});
+//     dd("Email is Sent.");
+// });
