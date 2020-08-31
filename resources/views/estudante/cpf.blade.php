@@ -26,9 +26,10 @@
 
 
                         <div class="col-md-12">
-                            <form action="" method="POST">
-
-                                <button type="button" class="btn btn-block bg-gradient-primary btn-lg"><i
+                            <form action="{{route('possui.cpf')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="dadosPessoais" value="{{$objetoEstudante}}">
+                                <button type="submit" class="btn btn-block bg-gradient-primary btn-lg"><i
                                         class="icon fas fa-check"></i> Sim </button>
                                 <hr>
                             </form>

@@ -46,8 +46,10 @@ Route::resource('usuarios', 'UserController')->names('user')->parameters(['usuar
 Route::resource('estudante', 'EstudanteController')->names('estudante')->parameters(['estudante' => 'estudante']);
 Route::get('consultar', 'EstudanteController@consultarSituacao')->name('consultar.situacao');
 Route::post('possuiCpf', 'EstudanteController@possuiCpf')->name('possui.cpf');
-Route::post('NaoPossuiCpf', 'EstudanteController@naoPossuiCpf')->name('nao.possui.cpf');
-
+Route::post('dadosResponsavel', 'EstudanteController@naoPossuiCpf')->name('nao.possui.cpf');
+Route::post('dadosAluno', 'EstudanteController@dadosAluno')->name('possui.cpf');
+Route::post('formDadosResponsavel', 'EstudanteController@dadosResponsavel')->name('dados.responsavel');
+Route::post('protocolo', 'EstudanteController@escolaridade')->name('finaliza.cadastro');
 
 /// MAIL
 // Route::get('send-mail', function () {

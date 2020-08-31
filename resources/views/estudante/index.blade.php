@@ -14,52 +14,54 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
+            </div>
 
 
+            <form action="{{ route('possui.cpf') }}" method="POST">
+                @csrf
+                <div class="card-body " id="divDadosPessoais">
 
-                <form role="form" id="dadosPessoais" novalidate="novalidate">
-                    <div class="card-body " id="divDadosPessoais">
+                    <div class="callout callout-danger">
+                        <h5>Atenção </h5>
 
-                        <div class="callout callout-danger">
-                            <h5>Atenção </h5>
+                        <p><b> Nesta tela todos os campos são obrigatórios </b></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nome do Aluno</label>
+                        <input type="text" name="nomeAluno" class="form-control" id="nomeAluno"
+                            placeholder="Nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="responsavel">Nome do Responsável </label>
+                        <input type="text" name="responsavel" class="form-control" id="responsavel"
+                            placeholder="Nome completo " requi red>
+                    </div>
+                    <div class="form-group">
+                        <label for="naturalidade">Naturalidade</label>
+                        <input type="text" name="naturalidade" class="form-control" id="naturalidade"
+                            placeholder="Paranavaí " required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone de contato :</label>
 
-                            <p><b> Nesta tela todos os campos são obrigatórios </b></p>
-                        </div>
-                        <div class="form-group">
-                            <label for="nome">Nome do Aluno</label>
-                            <input type="text" name="nomeAluno" class="form-control" id="nomeAluno"
-                                placeholder="Nome completo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="responsavel">Nome do Responsável </label>
-                            <input type="text" name="responsavel" class="form-control" id="responsavel"
-                                placeholder="Nome completo " required>
-                        </div>
-                        <div class="form-group">
-                            <label for="naturalidade">Naturalidade</label>
-                            <input type="text" name="naturalidade" class="form-control" id="naturalidade"
-                                placeholder="Paranavaí " required>
-                        </div>
-                        <div class="form-group">
-                            <label>Telefone de contato :</label>
-
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                </div>
-                                <input type="text" class="form-control" name="telefone" id="telefone"
-                                    data-inputmask="&quot;mask&quot;: &quot;(99) 99999-9999&quot;" data-mask=""
-                                    inputmode="verbatim" im-insert="true" required>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary" id="btn-dadosPessoais"><i
-                                        class="fas fa-long-arrow-alt-right"></i>
-                                    Próximo</button>
-                            </div>
-
-                            <!-- /.input group -->
+                            <input type="text" class="form-control" name="telefone" id="telefone"
+                                data-inputmask="&quot;mask&quot;: &quot;(99) 99999-9999&quot;" data-mask=""
+                                inputmode="verbatim" im-insert="true" required>
                         </div>
-                        {{--  <div class="form-group">
+
+
+                        <!-- /.input group -->
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-long-arrow-alt-right"></i>
+                            Próximo</button>
+                    </div>
+                </div>
+                {{--  <div class="form-group">
 
                         <div class="form-group">
                             <label>Minimal</label>
@@ -75,39 +77,37 @@
                             </select>
                         </div>
                     </div>  --}}
-                        <!-- /.card-body -->
-
-                    </div>
-
-                </form>
-                <form action="" method="POST">
-                    @csrf
-                    <div class="card-body" id="cpf">
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-long-arrow-alt-right"></i>
-                                Próximo</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
 
 
+            </form>
         </div>
     </div>
-    <!-- /.card -->
 </div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
 
 <!-- /.container-fluid -->
 </section>
 <script>
-    $(document).ready(function () {
-        $("#cpf").hide();
+    {{-- $(document).ready(function () {
+        $("#divCpf").hide();
+        $("#divDadosResponsavel").hide();
+        $("#divDadosAluno").hide();
+        $("#divEscolaridade").hide();
+
+
 
   $.validator.setDefaults({
     submitHandler: function () {
         $("#divDadosPessoais").hide();
-        $("#cpf").show();
+
     }
   });
 
@@ -126,9 +126,33 @@
       telefone: {
         required: true
       },
+      possuiCpf: {
+        required: true
+      },
+
 
 
     },
+    messages: {
+        nomeAluno: {
+          required: "Campo Obrigatório",
+
+        },
+        responsavel: {
+          required: "Campo Obrigatório",
+
+        },
+        naturalidade: {
+            required:"Campo Obrigatório"
+        },
+
+        telefone: {
+            required: "Campo Obrigatório"
+        },
+
+
+      },
+
 
     errorElement: 'span',
     errorPlacement: function (error, element) {
@@ -142,6 +166,25 @@
       $(element).removeClass('is-invalid');
     }
   });
+//div cpf possui
+$("#possuiCpf").on('click', function() {
+    $("#divCpf").hide();
+    $("#divDadosAluno").show();
+    $("#divEscolaridade").hide();
+
+});
+$("#naoPossuiCpf").on('click', function() {
+    $("#divCpf").hide();
+    $("#divDadosResponsavel").show();
+});
+
+$("#escolaridade").on('click', function() {
+    $("#divDadosResponsavel").hide();
+
+    $("#divEscolaridade").show();
+    $("#divCpf").hide();
+}); --}}
+
 });
 </script>
 @endsection
