@@ -17,7 +17,7 @@
             </div>
 
 
-            <form action="{{ route('possui.cpf') }}" method="POST">
+            <form action="{{ route('verifica.cpf') }}" method="POST">
                 @csrf
                 <div class="card-body " id="divDadosPessoais">
 

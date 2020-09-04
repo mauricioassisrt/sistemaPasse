@@ -7,11 +7,17 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Passe Livre| Startup</title>
+    {{--  ICON   --}}
     <link rel="shortcut icon" href="img/o.png">
+    {{--  FONTAWESOME   --}}
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    {{--  CSS PRINCIPAL   --}}
     <link rel="stylesheet" href="css/app.css">
+    {{--  SELECT   --}}
     <link rel="stylesheet" href="css/select2.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/select2-bootstrap4.min.css">
+    {{--  SELECT   --}}
 
 </head>
 
@@ -236,7 +242,7 @@
                 required: true,
               },
 
-            },
+                },
 
               messages: {
                 consultaCPF: {

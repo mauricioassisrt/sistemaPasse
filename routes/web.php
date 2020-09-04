@@ -3,16 +3,6 @@
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Auth::routes();
 
@@ -45,11 +35,11 @@ Route::resource('usuarios', 'UserController')->names('user')->parameters(['usuar
 //ROTA ESTUDANTE
 Route::resource('estudante', 'EstudanteController')->names('estudante')->parameters(['estudante' => 'estudante']);
 Route::get('consultar', 'EstudanteController@consultarSituacao')->name('consultar.situacao');
-Route::post('possuiCpf', 'EstudanteController@possuiCpf')->name('possui.cpf');
+Route::post('verificaCpf', 'EstudanteController@verificaCpf')->name('verifica.cpf');
 Route::post('dadosResponsavel', 'EstudanteController@naoPossuiCpf')->name('nao.possui.cpf');
-Route::post('dadosAluno', 'EstudanteController@dadosAluno')->name('possui.cpf');
-Route::post('formDadosResponsavel', 'EstudanteController@dadosResponsavel')->name('dados.responsavel');
-Route::post('protocolo', 'EstudanteController@escolaridade')->name('finaliza.cadastro');
+Route::post('dadosAluno', 'EstudanteController@possuiCpf')->name('possui.cpf');
+Route::post('dadosDaSerie', 'EstudanteController@dadosSerie')->name('dados.serie');
+Route::post('finalizaCadastro', 'EstudanteController@finalizaCadastro')->name('finaliza');
 
 /// MAIL
 // Route::get('send-mail', function () {
