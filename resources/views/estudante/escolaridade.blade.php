@@ -27,7 +27,7 @@
             <form action="{{ route('finaliza') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <input type="hidden" name="dadosResponsavel" value="{{ $dados }}">
+                <input type="hidden" name="dadosAluno" value="{{ $dados }}">
 
                 <div class="form-group">
                     <label for="escola">Nome da escola ou faculdade <b class="text-danger">*</b> </label>

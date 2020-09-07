@@ -130,42 +130,80 @@ class EstudanteController extends Controller
         }
     }
 
-    // ao preencher os dados ou da tela do aluno ou da tela do responsavel ele é direcionado para este metodo
+    // ao preencher os dados ou da tela do aluno ou da tela do responsavel ele é direcionado para este metodo, dados estes pessoais
     //onde o mesmo verifica as informações que vieram do formulario
     public function dadosSerie(Request $request)
     {
         try {
+            $objetoEstudante = new Estudante();
+            $objetoEstudante = json_decode($request->dadosPessoaisAluno);
 
             //verifica se o campo vier possuiCpf == 1 o aluno possui cpf caso contrario ele não possui ai cai no else
-            if ($request->possuiCpf == 1) {
-                $objetoEstudante = new Estudante();
-                $objetoEstudante = json_decode($request->dadosPessoaisAluno);
+            if ($request->possuiCpf == 1 && $request->hasFile('rgAlunoFoto') && $request->hasFile('cpfAlunoFoto')) {
+                //parte na qual verifica o input que veio um arquivo
+                $cpfFoto = $request->file('cpfAlunoFoto');
+                $rgFoto = $request->file('rgAlunoFoto');
+
+                //define o diretorio que sera a pasta public/alunos/cpf
+                $dir = "alunos" . '/' . $request->cpfAluno;
+                //pega o tipo de extensão do arquivo
+                $extencaoCpf = $cpfFoto->guessClientExtension();
+                $extencaoRg = $rgFoto->guessClientExtension();
+                //monta o arquivo seguido da extencao
+                $arquivoRgMover =  $objetoEstudante->nomeAluno . "-RG-" . "." . $extencaoRg;
+                $arquivoCpfMover =  $objetoEstudante->nomeAluno . "-CPF-" . "." . $extencaoCpf;
+                //move o arquivo para a pasta
+                $rgFoto->move($dir, $arquivoRgMover);
+                $cpfFoto->move($dir, $arquivoRgMover);
+
                 $objetoEstudante->rgResponsavel = "O Aluno possui CPF ";
                 $objetoEstudante->cpfResponsavel = "O Aluno possui CPF ";
                 $objetoEstudante->rgResponsavelFoto = "Vazio";
                 $objetoEstudante->cpfResponsavelFoto = "Vazio";
                 $objetoEstudante->certidaoNascimentoAlunoFoto = "Vazio";
-                $objetoEstudante->rgAlunoFoto = $request->rgAlunoFoto;
-                $objetoEstudante->cpfAlunoFoto = $request->cpfAlunoFoto;
+                $objetoEstudante->rgAlunoFoto = $dir . "/" . $arquivoRgMover;
+                $objetoEstudante->cpfAlunoFoto = $dir . "/" . $arquivoCpfMover;
                 $objetoEstudante->rgAluno = $request->rgAluno;
                 $objetoEstudante->cpfAluno = $request->cpfAluno;
+                //converter objeto em json
+
+                $dados = json_encode($objetoEstudante);
+
+                return view('estudante.escolaridade', compact('dados'));
+            } else if ($request->hasFile('rgResponsavelFoto') && $request->hasFile('cpfResponsavelFoto') && $request->hasFile('certidaoNascimentoAlunoFoto')) {
+
+                $objetoEstudante = new Estudante();
+                $objetoEstudante = json_decode($request->dadosPessoaisAluno);
+
+                $cpfFoto = $request->file('cpfResponsavelFoto');
+                $rgFoto = $request->file('rgResponsavelFoto');
+                $certidao = $request->file('certidaoNascimentoAlunoFoto');
+
+                // $numero = rand(1111, 9999);
+                $dir = "alunos" . '/' . $request->cpfResponsavel;
+                $extencaoCpf = $cpfFoto->guessClientExtension();
+                $extencaoRg = $rgFoto->guessClientExtension();
+                $extencaoCertidao = $certidao->guessClientExtension();
+                $arquivoRgMover =  $objetoEstudante->nomeAluno . "-RG-" . "." . $extencaoRg;
+                $arquivoCpfMover =  $objetoEstudante->nomeAluno . "-CPF-" . "." . $extencaoCpf;
+                $arquivoCertidaoMover =  $objetoEstudante->nomeAluno . "-CERTIDAO-" . "." . $extencaoCertidao;
+                $rgFoto->move($dir, $arquivoRgMover);
+                $cpfFoto->move($dir, $arquivoCpfMover);
+                $certidao->move($dir, $arquivoCertidaoMover);
+
+                $objetoEstudante->rgResponsavel = $request->rgResponsavel;
+                $objetoEstudante->cpfResponsavel = $request->cpfResponsavel;
+                $objetoEstudante->rgResponsavelFoto = $dir . "/" . $arquivoRgMover;
+                $objetoEstudante->cpfResponsavelFoto = $dir . "/" . $arquivoCpfMover;
+                $objetoEstudante->certidaoNascimentoAlunoFoto = $dir . "/" . $arquivoCertidaoMover;
+                $objetoEstudante->possuiCpf = 0;
                 //converter objeto em json
                 $dados = json_encode($objetoEstudante);
 
                 return view('estudante.escolaridade', compact('dados'));
-            } else {
-                $objetoEstudante = new Estudante();
-                $objetoEstudante = json_decode($request->dadosPessoaisAluno);
-                $objetoEstudante->rgResponsavel = $request->rgResponsavel;
-                $objetoEstudante->cpfResponsavel = $request->cpfResponsavel;
-                $objetoEstudante->rgResponsavelFoto = $request->rgResponsavelFoto;
-                $objetoEstudante->cpfResponsavelFoto = $request->cpfResponsavelFoto;
-                $objetoEstudante->certidaoNascimentoAlunoFoto = $request->certidaoNascimentoAlunoFoto;
-                //converter objeto em json
-                $dados = json_encode($objetoEstudante);
-                return view('estudante.escolaridade', compact('dados'));
             }
         } catch (\Throwable $th) {
+
             return view('layout.erro', compact('th'));
         }
     }
@@ -177,21 +215,26 @@ class EstudanteController extends Controller
             $objetoEstudante = new Estudante();
 
             //decode JSON dados aluno
-            $dadosPessoaisResponsavel = json_decode($request->dadosResponsavel);
             $dadosPessoaisEstudante = json_decode($request->dadosAluno);
 
-            if ($request->hasFile('declaracaoMatriculaFoto')) {
+            // dd($dadosPessoaisResponsavel);
+            if ($request->hasFile('declaracaoMatriculaFoto') && $dadosPessoaisEstudante->possuiCpf == 0) {
+                $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
 
+                $dir = "alunos" . '/' . $dadosPessoaisEstudante->cpfResponsavel;
+                $extencao = $declaracaoMatricula->guessClientExtension();
+                $nomeImagem =  $dadosPessoaisEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
+                $declaracaoMatricula->move($dir, $nomeImagem);
+                // $objetoEstudante->declaracaoMatriculaFoto = $dir . "/" . $nomeImagem;
+                dd($nomeImagem);
+            } else if ($request->hasFile('declaracaoMatriculaFoto')) {
                 $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
                 // $numero = rand(1111, 9999);
-                $dir = "alunos";
+                dd("DENTRO DO ELSE");
+                $dir = "alunos" . '/' . $dadosPessoaisEstudante->cpfAluno;
                 $extencao = $declaracaoMatricula->guessClientExtension();
-                // $nomeImagem =  $dadosPessoaisEstudante->nome . "." . $extencao;
-                // $declaracaoMatricula->move($dir, $nomeImagem);
-                // $objetoEstudante->declaracaoMatriculaFoto = $dir . "/" . $nomeImagem;
-                dd($request->hasFile('declaracaoMatriculaFoto'));
-            } else {
-                dd("ERRO");
+                $nomeImagem =  $dadosPessoaisEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
+                $declaracaoMatricula->move($dir, $nomeImagem);
             }
 
 
@@ -212,6 +255,7 @@ class EstudanteController extends Controller
             // $objetoEstudante->obs = $request->obs;
             // $objetoEstudante->declaracaoMatriculaFoto = $request->declaracaoMatriculaFoto;
         } catch (\Throwable $th) {
+
             return view('layout.erro', compact('th'));
         }
     }
