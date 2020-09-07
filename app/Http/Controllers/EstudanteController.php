@@ -150,11 +150,11 @@ class EstudanteController extends Controller
                 $extencaoCpf = $cpfFoto->guessClientExtension();
                 $extencaoRg = $rgFoto->guessClientExtension();
                 //monta o arquivo seguido da extencao
-                $arquivoRgMover =  $objetoEstudante->nomeAluno . "-RG-" . "." . $extencaoRg;
-                $arquivoCpfMover =  $objetoEstudante->nomeAluno . "-CPF-" . "." . $extencaoCpf;
+                $arquivoRgMover =  $objetoEstudante->nomeAluno . "-RG" . "." . $extencaoRg;
+                $arquivoCpfMover =  $objetoEstudante->nomeAluno . "-CPF" . "." . $extencaoCpf;
                 //move o arquivo para a pasta
                 $rgFoto->move($dir, $arquivoRgMover);
-                $cpfFoto->move($dir, $arquivoRgMover);
+                $cpfFoto->move($dir, $arquivoCpfMover);
 
                 $objetoEstudante->rgResponsavel = "O Aluno possui CPF ";
                 $objetoEstudante->cpfResponsavel = "O Aluno possui CPF ";
@@ -165,8 +165,8 @@ class EstudanteController extends Controller
                 $objetoEstudante->cpfAlunoFoto = $dir . "/" . $arquivoCpfMover;
                 $objetoEstudante->rgAluno = $request->rgAluno;
                 $objetoEstudante->cpfAluno = $request->cpfAluno;
+                $objetoEstudante->possuiCpf = 1;
                 //converter objeto em json
-
                 $dados = json_encode($objetoEstudante);
 
                 return view('estudante.escolaridade', compact('dados'));
@@ -184,9 +184,9 @@ class EstudanteController extends Controller
                 $extencaoCpf = $cpfFoto->guessClientExtension();
                 $extencaoRg = $rgFoto->guessClientExtension();
                 $extencaoCertidao = $certidao->guessClientExtension();
-                $arquivoRgMover =  $objetoEstudante->nomeAluno . "-RG-" . "." . $extencaoRg;
-                $arquivoCpfMover =  $objetoEstudante->nomeAluno . "-CPF-" . "." . $extencaoCpf;
-                $arquivoCertidaoMover =  $objetoEstudante->nomeAluno . "-CERTIDAO-" . "." . $extencaoCertidao;
+                $arquivoRgMover =  $objetoEstudante->nomeAluno . "-RG-responsavel" . "." . $extencaoRg;
+                $arquivoCpfMover =  $objetoEstudante->nomeAluno . "-CPF-responsavel-" . "." . $extencaoCpf;
+                $arquivoCertidaoMover =  $objetoEstudante->nomeAluno . "-CERTIDAO-responsavel" . "." . $extencaoCertidao;
                 $rgFoto->move($dir, $arquivoRgMover);
                 $cpfFoto->move($dir, $arquivoCpfMover);
                 $certidao->move($dir, $arquivoCertidaoMover);
@@ -213,11 +213,8 @@ class EstudanteController extends Controller
 
         try {
             $objetoEstudante = new Estudante();
-
             //decode JSON dados aluno
             $dadosPessoaisEstudante = json_decode($request->dadosAluno);
-
-            // dd($dadosPessoaisResponsavel);
             if ($request->hasFile('declaracaoMatriculaFoto') && $dadosPessoaisEstudante->possuiCpf == 0) {
                 $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
 
@@ -230,14 +227,13 @@ class EstudanteController extends Controller
             } else if ($request->hasFile('declaracaoMatriculaFoto')) {
                 $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
                 // $numero = rand(1111, 9999);
-                dd("DENTRO DO ELSE");
+
                 $dir = "alunos" . '/' . $dadosPessoaisEstudante->cpfAluno;
                 $extencao = $declaracaoMatricula->guessClientExtension();
                 $nomeImagem =  $dadosPessoaisEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
                 $declaracaoMatricula->move($dir, $nomeImagem);
+                dd("DENTRO DO ELSE");
             }
-
-
 
             // $objetoEstudante->nomeAluno = $dadosPessoaisEstudante->nomeAluno;
             // $objetoEstudante->responsavel = $dadosPessoaisEstudante->responsavel;
@@ -255,7 +251,7 @@ class EstudanteController extends Controller
             // $objetoEstudante->obs = $request->obs;
             // $objetoEstudante->declaracaoMatriculaFoto = $request->declaracaoMatriculaFoto;
         } catch (\Throwable $th) {
-
+            dd($th);
             return view('layout.erro', compact('th'));
         }
     }

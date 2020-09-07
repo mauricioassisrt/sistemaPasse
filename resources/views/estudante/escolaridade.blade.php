@@ -91,6 +91,9 @@
 
                 </div>
                 <div class="card-footer">
+                    <a href="{{route('estudante.index')}}" class="btn btn-success btn-lg "> <i
+                            class="fa fa-bus pull-right"></i>
+                        Inicio </a>
                     <button type="submit" class="btn btn-lg btn-primary"><i class="fas fa-long-arrow-alt-right"></i>
                         Finalizar</button>
                 </div>

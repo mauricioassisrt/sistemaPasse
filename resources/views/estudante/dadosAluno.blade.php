@@ -54,9 +54,14 @@
                 </div>
                 <br>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-lg btn-primary" id="btn-dadosPessoais"><i
+                    <a href="{{route('estudante.index')}}" class="btn btn-success btn-lg "> <i
+                            class="fa fa-bus pull-right"></i>
+                        Inicio </a>
+                    <button type="submit" class="btn btn-lg btn-primary pull-right" id="btn-dadosPessoais"><i
                             class="fas fa-long-arrow-alt-right"></i>
                         Próximo</button>
+
+
                 </div>
             </form>
         </div>

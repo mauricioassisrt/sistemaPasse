@@ -16,7 +16,7 @@
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h5><i class="icon fas fa-info"></i> Atenção!</h5>
-                        <strong> Caso não possua CPF clique em não, caso possua clique em sim!</strong>
+                        Caso não possua CPF clique em não, caso possua clique em sim!
                     </div>
 
 
@@ -25,27 +25,35 @@
                     <div class="row justify-content-center align-items-center">
 
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <form action="{{route('possui.cpf')}}" method="POST">
                                 @csrf
                                 <input type="hidden" name="dadosPessoais" value="{{$objetoEstudante}}">
-                                <button type="submit" class="btn btn-block bg-gradient-primary btn-lg"><i
+                                <button type="submit" class="btn btn-block btn-primary btn-lg"><i
                                         class="icon fas fa-check"></i> Sim </button>
-                                <hr>
+
                             </form>
                         </div>
 
-                        <div class="col-md-12 float-right">
+                        <div class="col-md-6 float-right">
 
                             <form action="{{route('nao.possui.cpf')}}" method="POST">
                                 @csrf
                                 <input type="hidden" name="dadosPessoais" value="{{$objetoEstudante}}">
-                                <button type="submit" class="btn btn-block bg-gradient-info btn-lg"><i
+                                <button type="submit" class="btn btn-block btn-danger btn-lg"><i
                                         class="icon fas fa-window-close"></i> Não</button>
-                                <hr>
-                            </form>
-                        </div>
 
+                            </form>
+
+                        </div>
+                        <hr>
+
+                    </div>
+                    <hr>
+                    <div class="box-footer">
+                        <a href="{{route('estudante.index')}}" class="btn btn-success btn-lg "> <i
+                                class="fa fa-bus pull-right"></i>
+                            Inicio </a>
                     </div>
 
                 </div>
