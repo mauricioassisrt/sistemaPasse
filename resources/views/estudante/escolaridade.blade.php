@@ -24,7 +24,7 @@
                 <p class="text-danger">Campos com <strong>*</strong> é de preenchimento obrigatório !</p>
             </div>
 
-            <form action="{{ route('finaliza') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('ende') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <input type="hidden" name="dadosAluno" value="{{ $dados }}">
@@ -95,7 +95,7 @@
                             class="fa fa-bus pull-right"></i>
                         Inicio </a>
                     <button type="submit" class="btn btn-lg btn-primary"><i class="fas fa-long-arrow-alt-right"></i>
-                        Finalizar</button>
+                        Próximo</button>
                 </div>
             </form>
         </div>

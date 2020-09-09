@@ -132,7 +132,7 @@ class EstudanteController extends Controller
 
     // ao preencher os dados ou da tela do aluno ou da tela do responsavel ele é direcionado para este metodo, dados estes pessoais
     //onde o mesmo verifica as informações que vieram do formulario
-    public function dadosSerie(Request $request)
+    public function dadosAluno(Request $request)
     {
         try {
             $objetoEstudante = new Estudante();
@@ -207,52 +207,63 @@ class EstudanteController extends Controller
             return view('layout.erro', compact('th'));
         }
     }
-    //metodo de finalização de cadastro, neste ele irá pegar todas as informações vinda do formulario e salvar no banco de dados
-    public function finalizaCadastro(Request $request)
+    // metodo no qual pega todos as inforamções da matricula
+    public function matricula(Request $request)
     {
 
         try {
             $objetoEstudante = new Estudante();
             //decode JSON dados aluno
-            $dadosPessoaisEstudante = json_decode($request->dadosAluno);
-            if ($request->hasFile('declaracaoMatriculaFoto') && $dadosPessoaisEstudante->possuiCpf == 0) {
+            $objetoEstudante = json_decode($request->dadosAluno);
+            //aqui verifica se é responsavel os dados vindos se for igual a zero significa que o aluno não possui cpf
+            //caso o aluno possua cpf cai no else if
+            if ($request->hasFile('declaracaoMatriculaFoto') && $objetoEstudante->possuiCpf == 0) {
+                //Foto atribui o arquivo vindo do request em uma variavel
                 $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
-
-                $dir = "alunos" . '/' . $dadosPessoaisEstudante->cpfResponsavel;
+                //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
+                $dir = "alunos" . '/' . $objetoEstudante->cpfResponsavel;
+                //pega a extenção
                 $extencao = $declaracaoMatricula->guessClientExtension();
-                $nomeImagem =  $dadosPessoaisEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
+                //renomeia a imagem
+                $nomeImagem =  $objetoEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
+                //move a imagem para a pasta
                 $declaracaoMatricula->move($dir, $nomeImagem);
-                // $objetoEstudante->declaracaoMatriculaFoto = $dir . "/" . $nomeImagem;
-                dd($nomeImagem);
+                //atribui ela no objeto
+                $objetoEstudante->declaracaoMatricula = $dir . '/' . $nomeImagem;
+                $objetoEstudante->instituicao = $request->instituicao;
+                $objetoEstudante->serie = $request->serie;
+                $objetoEstudante->turno = $request->turno;
+                $objetoEstudante->curso = $request->curso;
+
+                $dados = json_encode($objetoEstudante);
             } else if ($request->hasFile('declaracaoMatriculaFoto')) {
+                //mesmos procedimentos do if anterior
                 $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
-                // $numero = rand(1111, 9999);
-
-                $dir = "alunos" . '/' . $dadosPessoaisEstudante->cpfAluno;
+                $dir = "alunos" . '/' . $objetoEstudante->cpfAluno;
                 $extencao = $declaracaoMatricula->guessClientExtension();
-                $nomeImagem =  $dadosPessoaisEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
+                $nomeImagem =  $objetoEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
                 $declaracaoMatricula->move($dir, $nomeImagem);
-                dd("DENTRO DO ELSE");
+                $objetoEstudante->declaracaoMatricula = $dir . '/' . $nomeImagem;
+                //atribui ela no objeto
+                $objetoEstudante->declaracaoMatricula = $dir . '/' . $nomeImagem;
+                $objetoEstudante->instituicao = $request->instituicao;
+                $objetoEstudante->serie = $request->serie;
+                $objetoEstudante->turno = $request->turno;
+                $objetoEstudante->curso = $request->curso;
+
+                $dados = json_encode($objetoEstudante);
             }
 
-            // $objetoEstudante->nomeAluno = $dadosPessoaisEstudante->nomeAluno;
-            // $objetoEstudante->responsavel = $dadosPessoaisEstudante->responsavel;
-            // $objetoEstudante->naturalidade = $dadosPessoaisEstudante->naturalidade;
-            // $objetoEstudante->telefone = $dadosPessoaisEstudante->telefone;
-            // //JSON dados do responsavel
-            // $objetoEstudante->rgResponsavel = $dadosPessoaisResponsavel->rgResponsavel;
-            // $objetoEstudante->cpfResponsavel = $dadosPessoaisResponsavel->cpfResponsavel;
-            // $objetoEstudante->rgResponsavelFoto = $dadosPessoaisResponsavel->rgResponsavelFoto;
-            // $objetoEstudante->cpfResponsavelFoto = $dadosPessoaisResponsavel->cpfResponsavelFoto;
-            // $objetoEstudante->certidaoNascimentoAlunoFoto = $dadosPessoaisResponsavel->certidaoNascimentoAlunoFoto;
-            // $objetoEstudante->instituicao = $request->instituicao;
-            // $objetoEstudante->serie = $request->turno;
-            // $objetoEstudante->curso = $request->curso;
-            // $objetoEstudante->obs = $request->obs;
-            // $objetoEstudante->declaracaoMatriculaFoto = $request->declaracaoMatriculaFoto;
+            return view('estudante.endereco', compact('dados'));
         } catch (\Throwable $th) {
-            dd($th);
+
             return view('layout.erro', compact('th'));
         }
+    }
+    //metodo de finalização de cadastro, neste ele irá pegar todas as informações vinda do formulario e salvar no banco de dados
+
+    public function finaliza(Request $request)
+    {
+        dd('No metodo endereco');
     }
 }

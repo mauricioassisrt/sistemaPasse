@@ -209,77 +209,77 @@
 
 
 
-            //Bootstrap Duallistbox
-            $('.duallistbox').bootstrapDualListbox()
+            // //Bootstrap Duallistbox
+            // $('.duallistbox').bootstrapDualListbox()
 
-            //Colorpicker
-            $('.my-colorpicker1').colorpicker()
-            //color picker with addon
-            $('.my-colorpicker2').colorpicker()
+            // //Colorpicker
+            // $('.my-colorpicker1').colorpicker()
+            // //color picker with addon
+            // $('.my-colorpicker2').colorpicker()
 
-            $('.my-colorpicker2').on('colorpickerChange', function(event) {
-              $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-            });
+            // $('.my-colorpicker2').on('colorpickerChange', function(event) {
+            //   $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+            // });
 
             $("input[data-bootstrap-switch]").each(function(){
               $(this).bootstrapSwitch('state', $(this).prop('checked'));
             });
 
           })
-        $(document).ready(function () {
-          $.validator.setDefaults({
-            submitHandler: function () {
-              alert( "Form successful submitted!" );
-            }
-          });
-          $('#quickForm').validate({
-            rules: {
-                consultaCPF: {
-                required: true,
+        // $(document).ready(function () {
+        //   $.validator.setDefaults({
+        //     submitHandler: function () {
+        //       alert( "Form successful submitted!" );
+        //     }
+        //   });
+        //   $('#quickForm').validate({
+        //     rules: {
+        //         consultaCPF: {
+        //         required: true,
 
-              },
-              consultaProtocolo: {
-                required: true,
-              },
+        //       },
+        //       consultaProtocolo: {
+        //         required: true,
+        //       },
 
-                },
+        //         },
 
-              messages: {
-                consultaCPF: {
-                   required: "Nenhum dado informado",
+        //       messages: {
+        //         consultaCPF: {
+        //            required: "Nenhum dado informado",
 
-                 },
-                 consultaProtocolo: {
-                   required: "Informe um valor",
+        //          },
+        //          consultaProtocolo: {
+        //            required: "Informe um valor",
 
-                 },
-                 nomeAluno:{
-                   required: "Informe um nome para o aluno",
-                 },
-                 responsavel:{
-                   required: "Informe um nome para o responsável ",
-                 },
-                 naturalidade:{
-                   required: "Informe uma cidade ",
-                 },
-                 telefone:{
-                   required: "Informe um telefone ",
-                 },
+        //          },
+        //          nomeAluno:{
+        //            required: "Informe um nome para o aluno",
+        //          },
+        //          responsavel:{
+        //            required: "Informe um nome para o responsável ",
+        //          },
+        //          naturalidade:{
+        //            required: "Informe uma cidade ",
+        //          },
+        //          telefone:{
+        //            required: "Informe um telefone ",
+        //          },
 
-            },
-            errorElement: 'span',
-            errorPlacement: function (error, element) {
-              error.addClass('invalid-feedback');
-              element.closest('.form-group').append(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-              $(element).addClass('is-invalid');
-            },
-            unhighlight: function (element, errorClass, validClass) {
-              $(element).removeClass('is-invalid');
-            }
-          });
-        });
+        //     },
+        //     errorElement: 'span',
+        //     errorPlacement: function (error, element) {
+        //       error.addClass('invalid-feedback');
+        //       element.closest('.form-group').append(error);
+        //     },
+        //     highlight: function (element, errorClass, validClass) {
+        //       $(element).addClass('is-invalid');
+        //     },
+        //     unhighlight: function (element, errorClass, validClass) {
+        //       $(element).removeClass('is-invalid');
+        //     }
+        //   });
+        // });
     </script>
 
 </body>

@@ -38,9 +38,9 @@ Route::get('consultar', 'EstudanteController@consultarSituacao')->name('consulta
 Route::post('verificaCpf', 'EstudanteController@verificaCpf')->name('verifica.cpf');
 Route::post('dadosResponsavel', 'EstudanteController@naoPossuiCpf')->name('nao.possui.cpf');
 Route::post('dadosAluno', 'EstudanteController@possuiCpf')->name('possui.cpf');
-Route::post('dadosDaSerie', 'EstudanteController@dadosSerie')->name('dados.serie');
-Route::post('finalizaCadastro', 'EstudanteController@finalizaCadastro')->name('finaliza');
-
+Route::post('dadosDaSerie', 'EstudanteController@dadosAluno')->name('dados.serie');
+Route::post('localizacao', 'EstudanteController@matricula')->name('ende');
+Route::post('protocoloGerar', 'EstudanteController@finaliza')->name('finaliza');
 /// MAIL
 // Route::get('send-mail', function () {
 
