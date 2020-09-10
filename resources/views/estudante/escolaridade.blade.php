@@ -73,7 +73,7 @@
                     <select class="form-control select2 select2-accessible" style="width: 100%;" required name="turno">
                         <option value="Matutino - Manhã ">Matutino - Manhã </option>
                         <option value="Vespertino - Tarde ">Vespertino - Tarde </option>
-                        <option value="Noturno - Noite"> Noturno - Noite </option>
+                        <option value="Integral "> Integral </option>
                         <option value="Noturno - Noite">Noturno - Noite</option>
                     </select>
                 </div>

@@ -33,7 +33,7 @@
                 <div class="col-md-12">
                     <label for="dados"> RG do Aluno <b class="text-danger">*</b> </label>
                     <input type="text" class="form-control" name="rgAluno" id="rgAluno" required
-                        data-inputmask="&quot;mask&quot;: &quot; 999.999.999-99&quot;" data-mask="" inputmode="verbatim"
+                        data-inputmask="&quot;mask&quot;: &quot; 99.999.999-9&quot;" data-mask="" inputmode="verbatim"
                         im-insert="true" required>
                 </div>
                 <div class="col-md-12">

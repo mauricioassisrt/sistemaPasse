@@ -217,33 +217,25 @@ class EstudanteController extends Controller
             $objetoEstudante = json_decode($request->dadosAluno);
             //aqui verifica se é responsavel os dados vindos se for igual a zero significa que o aluno não possui cpf
             //caso o aluno possua cpf cai no else if
-            if ($request->hasFile('declaracaoMatriculaFoto') && $objetoEstudante->possuiCpf == 0) {
+            if ($request->hasFile('declaracaoMatriculaFoto')) {
                 //Foto atribui o arquivo vindo do request em uma variavel
                 $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
                 //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
-                $dir = "alunos" . '/' . $objetoEstudante->cpfResponsavel;
+
+                if ($objetoEstudante->possuiCpf == 0) {
+                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
+                    $dir = "alunos" . '/' . $objetoEstudante->cpfResponsavel;
+                } else {
+                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
+                    $dir = "alunos" . '/' . $objetoEstudante->cpfAluno;
+                }
+
                 //pega a extenção
                 $extencao = $declaracaoMatricula->guessClientExtension();
                 //renomeia a imagem
                 $nomeImagem =  $objetoEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
                 //move a imagem para a pasta
                 $declaracaoMatricula->move($dir, $nomeImagem);
-                //atribui ela no objeto
-                $objetoEstudante->declaracaoMatricula = $dir . '/' . $nomeImagem;
-                $objetoEstudante->instituicao = $request->instituicao;
-                $objetoEstudante->serie = $request->serie;
-                $objetoEstudante->turno = $request->turno;
-                $objetoEstudante->curso = $request->curso;
-
-                $dados = json_encode($objetoEstudante);
-            } else if ($request->hasFile('declaracaoMatriculaFoto')) {
-                //mesmos procedimentos do if anterior
-                $declaracaoMatricula = $request->file('declaracaoMatriculaFoto');
-                $dir = "alunos" . '/' . $objetoEstudante->cpfAluno;
-                $extencao = $declaracaoMatricula->guessClientExtension();
-                $nomeImagem =  $objetoEstudante->nomeAluno . "-DECLARACAO-MATRICULA" . "." . $extencao;
-                $declaracaoMatricula->move($dir, $nomeImagem);
-                $objetoEstudante->declaracaoMatricula = $dir . '/' . $nomeImagem;
                 //atribui ela no objeto
                 $objetoEstudante->declaracaoMatricula = $dir . '/' . $nomeImagem;
                 $objetoEstudante->instituicao = $request->instituicao;
@@ -264,6 +256,44 @@ class EstudanteController extends Controller
 
     public function finaliza(Request $request)
     {
-        dd('No metodo endereco');
+
+
+        try {
+            $objetoEstudante = new Estudante();
+            //decode JSON dados aluno
+            $objetoEstudante = json_decode($request->dadosPessoaisAluno);
+
+            if ($request->hasFile('comprovanteResidencia')) {
+                //Foto atribui o arquivo vindo do request em uma variavel
+                $comprovanteResidencia = $request->file('comprovanteResidencia');
+                if ($objetoEstudante->possuiCpf == 0) {
+                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
+                    $dir = "alunos" . '/' . $objetoEstudante->cpfResponsavel;
+                } else {
+                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
+                    $dir = "alunos" . '/' . $objetoEstudante->cpfAluno;
+                }
+
+                //pega a extenção
+                $extencao = $comprovanteResidencia->guessClientExtension();
+                //renomeia a imagem
+                $nomeImagem =  $objetoEstudante->nomeAluno . "-COMPROVANTE-RESIDENCIA" . "." . $extencao;
+                //move a imagem para a pasta
+                $comprovanteResidencia->move($dir, $nomeImagem);
+                //atribui ela no objeto
+                $objetoEstudante->comprovanteResidencia = $dir . '/' . $nomeImagem;
+                $objetoEstudante->cep = $request->cep;
+                $objetoEstudante->rua = $request->rua;
+                $objetoEstudante->numeroCasa = $request->numeroCasa;
+                $objetoEstudante->bairro = $request->bairro;
+                $objetoEstudante->cidade = $request->cidade;
+
+
+
+                dd($objetoEstudante);
+            }
+        } catch (\Throwable $th) {
+            return view('layout.erro', compact('th'));
+        }
     }
 }

@@ -132,10 +132,7 @@
                     <label>Cidade:<b class="text-danger">*</b></label></label>
                     <input name="cidade" type="text" id="cidade" size="40" class="form-control" required />
                 </div>
-                <div class="form-group">
-                    <label>Estado:<b class="text-danger">*</b></label></label>
-                    <input name="uf" type="text" id="uf" size="2" class="form-control" required />
-                </div>
+
                 <div class="card-footer">
                     <a href="{{route('estudante.index')}}" class="btn btn-success btn-lg "> <i
                             class="fa fa-bus pull-right"></i>
