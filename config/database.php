@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'mysql-externo2',
+    'default' => env('DB_CONNECTION', 'mysql-externo2'),
 
     /*
     |--------------------------------------------------------------------------
@@ -38,11 +38,20 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'database' => env('DB_DATABASE', database_path('app_passe.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-
+        // 'mysql' => [
+        //     'driver'    => 'mysql',
+        //     'host'      => 'localhost',
+        //     'database'  => 'projetopasse',
+        //     'username'  => 'root',
+        //     'password'  => '',
+        //     'charset'   => 'utf8',
+        //     'collation' => 'utf8_unicode_ci',
+        //     'prefix'    => '',
+        // ],
         'mysql-local' => [
             'driver' => 'mysql',
             'host' => 'localhost',
