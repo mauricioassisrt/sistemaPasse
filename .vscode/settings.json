@@ -1,0 +1,26 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "locahost",
+            "group": "locahost",
+            "database": "projetopasse",
+            "username": "root"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "conexao",
+            "group": "projeto-passe",
+            "database": "${workspaceFolder:sistemaPasse}/database/app_passe.sqlite"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
