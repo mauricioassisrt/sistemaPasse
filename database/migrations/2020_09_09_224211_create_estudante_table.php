@@ -21,6 +21,10 @@ class CreateEstudanteTable extends Migration
             $table->string('responsavel')->nullable($value = true);
             $table->string('naturalidade')->nullable($value = true);
             $table->string('telefone')->nullable($value = true);
+            $table->string('rg_aluno_foto')->nullable($value = true);
+            $table->string('cpf_aluno_foto')->nullable($value = true);
+            $table->string('rg_aluno')->nullable($value = true);
+            $table->string('cpf_aluno')->nullable($value = true);
             $table->string('rg_responsavel')->nullable($value = true);
             $table->string('cpf_responsavel')->nullable($value = true);
             $table->string('rg_responsavel_foto')->nullable($value = true);
@@ -38,10 +42,9 @@ class CreateEstudanteTable extends Migration
             $table->string('numero_casa')->nullable($value = true);
             $table->string('bairro')->nullable($value = true);
             $table->string('cidade')->nullable($value = true);
+
             // $table->integer('user_id')->unsigned();
             // $table->foreign('user_id')->references('id')->on('users');
-
-
         });
     }
 
