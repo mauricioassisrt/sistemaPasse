@@ -26,21 +26,32 @@
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand navbar-dark navbar-success">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="{{ route('home') }}" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
 
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                @if (Auth::check())
                 <!-- Messages Dropdown Menu -->
-                {{-- <a class="nav-link" href="/../logout">
+                <li>
+
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"> Logout
                         <i class="fas fa-sign-in-alt"></i>
 
-                    </a> --}}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                @endif
                 <!-- Notifications Dropdown Menu -->
                 <span class="fa fa-sign-out"></span>
                 {{-- <li class="nav-item dropdown">
@@ -76,9 +87,9 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar elevation-4 sidebar-light-green">
+        <aside class="main-sidebar elevation-4 sidebar-dark-green">
             <!-- Brand Logo -->
-            <a href="" class="brand-link navbar-light">
+            <a href="{{ route('home') }}" class="brand-link navbar-success">
                 <i class="fa fa-bus" aria-hidden="true">
                 </i>
                 <span class="brand-text font-weight-light">Passe Livre</span>
@@ -103,6 +114,27 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                        @if (Auth::check())
+
+                        <li class="nav-item">
+
+                            <a href="{{ route('home') }}" class="nav-link active">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <p>Home </p>
+                            </a>
+
+
+                        </li>
+                        <li class="nav-item">
+
+                            <a href="{{ route('admin.index') }}" class="nav-link active">
+                                <i class="fas fa-user-graduate"></i>
+                                <p>Cadastros Realizados </p>
+                            </a>
+
+
+                        </li>
+                        @endif
 
                         <li class="nav-item has-treeview menu-close">
                             <a href="{{route('consultar.situacao')}}" class="nav-link active">

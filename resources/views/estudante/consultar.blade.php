@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="col-md-12">
             <!-- jquery validation -->
-            <div class="card card-green">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Consultar Situação </h3>
                 </div>

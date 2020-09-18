@@ -3,18 +3,18 @@
 @section('content')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<div class="row">
-    <!-- left column -->
-    <div class="container-fluid">
-        <div class="col-lg-12 col-12">
-            <!-- jquery validation -->
-            <div class="card card-light-dark">
-                <div class="card-header">
-                    <h3 class="card-title">Novo cadastro de passe livre </h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-            </div>
+
+<div class="container-fluid">
+
+
+
+    <div class="card card-light-dark">
+        <div class="card-header">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5>Dados do Aluno</h5>
+
+        </div>
+        <div class="card-body">
 
 
             <form action="{{ route('verifica.cpf') }}" method="POST">
@@ -57,7 +57,7 @@
                         <!-- /.input group -->
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-long-arrow-alt-right"></i>
+                        <button type="submit" class="btn btn-lg btn-primary"><i class="fas fa-long-arrow-alt-right"></i>
                             Próximo</button>
                     </div>
                 </div>
