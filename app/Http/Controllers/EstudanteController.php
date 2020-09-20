@@ -311,9 +311,9 @@ class EstudanteController extends Controller
                 $objetoEstudante->cpf_aluno_foto = $dadosVindoForm->cpf_aluno_foto;
                 $objetoEstudante->rg_aluno = $dadosVindoForm->rg_aluno;
                 $objetoEstudante->cpf_aluno = $dadosVindoForm->cpf_aluno;
-
+                // dd($objetoEstudante->turno);
                 $objetoEstudante->save();
-                return view('estudante.protocolo');
+                return view('estudante.protocolo', compact('objetoEstudante'));
             }
         } catch (\Throwable $th) {
             dd($th);
