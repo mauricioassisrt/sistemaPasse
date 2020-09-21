@@ -136,137 +136,286 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <div id="impressao">
 
-                                                                    <br>
-                                                                    <h1 class="text-center text-success"><strong><i
-                                                                                class="fa fa-check fa-lg"></i>
-                                                                            Comprovante recadastro de
-                                                                            vale transporte {{date('Y')}}</strong></h1>
-                                                                    <br>
-                                                                    <center><img
-                                                                            src="https://www.graphicsprings.com/filestorage/stencils/f794ad52bccba5259868672d8db49de5.png?width=500&height=500"
-                                                                            width="20%" height="20%">
-                                                                    </center>
-                                                                    <center
-                                                                        style="margin-top: 5px; margin-bottom: 5px;">
-                                                                        <div id="qrcode"
-                                                                            style="width: 100px !important; height: 100px !important;">
-                                                                            <canvas width="80" height="80"></canvas>
-                                                                        </div>
-                                                                    </center>
 
-                                                                    <h3 class="text-center"><b>Protocolo: <span
-                                                                                id="protocolo"
-                                                                                name="protocolo">{{$estudante->protocolo}}</span></b>
-                                                                    </h3>
-                                                                    <h3 class="text-center">Cadastro para protocolo do
-                                                                        aluno(a)
-                                                                        <b>{{$estudante->nome_aluno}}</b><br>,
-                                                                        CPF <b>{{$estudante->cpf_aluno}}</b>,
-                                                                        RG
-                                                                        <b> {{$estudante->rg_aluno}}</b>, Responsável
-                                                                        é
-                                                                        <b>{{$estudante->responsavel}}</b>,
-                                                                        portador do CPF
-                                                                        <b> {{$estudante->cpf_responsavel}}</b>,
 
-                                                                    </h3>
-                                                                    <h4 class="text-center"> - - - - - - - - - - - - - -
-                                                                        - - - - - - - -
-                                                                        - - - - - - - </h4>
-                                                                    <h4 class="text-center"><b>Dados de endereço do
-                                                                            aluno :</b> <span id="sSerie">
-                                                                        </span></h4>
-                                                                    <h4 class="text-center"> - - - - - - - - - - - - - -
-                                                                        - - - - - - - -
-                                                                        - - - - - - - </h4>
-                                                                    <h4 class="text-center"><b>Rua :</b> <span
-                                                                            id="sEscola2">{{$estudante->rua}}</span>
-                                                                    </h4>
-                                                                    <h4 class="text-center"><b>Número:</b> <span
-                                                                            id="sEscola2">{{$estudante->numero_casa}}</span>
-                                                                    </h4>
-                                                                    <h4 class="text-center"><b>Bairro:</b> <span
-                                                                            id="sEscola2">{{$estudante->bairro}}</span>
-                                                                    </h4>
-                                                                    <h4 class="text-center"><b>CEP:</b> <span
-                                                                            id="sEscola2">{{$estudante->cep}}</span>
-                                                                    </h4>
-                                                                    <h4 class="text-center"> - - - - - - - - - - - - - -
-                                                                        - - - - - - - -
-                                                                        - - - - - - - </h4>
-                                                                    <h4 class="text-center"><b>Dados da Instituição
-                                                                            :</b> <span id="sSerie">
-                                                                        </span></h4>
-                                                                    <h4 class="text-center"> - - - - - - - - - - - - - -
-                                                                        - - - - - - - -
-                                                                        - - - - - - - </h4>
-                                                                    <h4 class="text-center"><b>Escola/Universidade:</b>
-                                                                        <span id="sEscola1">
-                                                                            {{$estudante->instituicao}}</span>
-                                                                    </h4>
-                                                                    <h4 class="text-center"><b>Série:</b> <span
-                                                                            id="sEscola2">{{$estudante->serie}}</span>
-                                                                    </h4>
-                                                                    <h4 class="text-center"><b>Turno</b> <span
-                                                                            id="sEscola3">
-                                                                            {{$estudante->turno}}</span></h4>
-                                                                    <h4 class="text-center"> - - - - - - - - - - - - - -
-                                                                        - - - - - - - -
-                                                                        - - - - - - - </h4>
-                                                                    <h5 class="text-center"><b>Data:</b> <span
-                                                                            id="sData">
-                                                                            {{date('d/m/Y', strtotime($estudante->data_cadastro) ) }}
-                                                                        </span> </h5>
-                                                                    <br>
+                                                                <div class="row">
+                                                                    <div class="col-4">
+                                                                        <label for="nome">Nome do Aluno</label>
+                                                                        <input type="text" name="nomeAluno"
+                                                                            class="form-control" id="nomeAluno"
+                                                                            placeholder="Nome completo" required
+                                                                            value="{{$estudante->nome_aluno}}">
+
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <label for="responsavel">Nome do Responsável
+                                                                        </label>
+                                                                        <input type="text" name="responsavel"
+                                                                            class="form-control" id="responsavel"
+                                                                            placeholder="Nome completo " required
+                                                                            value="{{$estudante->responsavel}}">
+
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <label for="naturalidade">Naturalidade</label>
+                                                                        <input type="text" name="naturalidade"
+                                                                            class="form-control" id="naturalidade"
+                                                                            placeholder="Paranavaí " required
+                                                                            value="{{$estudante->naturalidade}}">
+
+                                                                    </div>
 
                                                                 </div>
-                                                                <br>
+
+
+                                                                <div class="row">
+                                                                    <div class="col-4">
+                                                                        <label for="dados"> RG do Aluno <b
+                                                                                class="text-danger">*</b> </label>
+                                                                        <input type="text" class="form-control"
+                                                                            name="rgAluno" id="rgAluno" required
+                                                                            data-inputmask="&quot;mask&quot;: &quot; 99.999.999-9&quot;"
+                                                                            data-mask="" inputmode="verbatim"
+                                                                            im-insert="true" required
+                                                                            value="{{$estudante->rg_aluno}}">
+
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <label for="dados"> </label>
+                                                                        <label for="dados"> CPF do Aluno <b
+                                                                                class="text-danger">*</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            name="cpfAluno" id="cpfAluno"
+                                                                            data-inputmask="&quot;mask&quot;: &quot; 999.999.999-99&quot;"
+                                                                            data-mask="" inputmode="verbatim"
+                                                                            im-insert="true" required
+                                                                            value="{{$estudante->cpf_aluno}}">
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <label>Telefone de contato :</label>
+
+
+
+                                                                        <input type="text" class="form-control"
+                                                                            name="telefone" id="telefone"
+                                                                            data-inputmask="&quot;mask&quot;: &quot;(99) 99999-9999&quot;"
+                                                                            data-mask="" inputmode="verbatim"
+                                                                            im-insert="true" required
+                                                                            value="{{$estudante->telefone}}">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-3">
+                                                                        <label for="escola">Nome da escola ou faculdade
+                                                                            <b class="text-danger">*</b> </label>
+                                                                        <input type="text" name="instituicao"
+                                                                            class="form-control"
+                                                                            placeholder="Exemplo, Unespar " required
+                                                                            value="{{$estudante->instituicao}}">
+                                                                    </div>
+
+
+                                                                    <div class="col-3">
+                                                                        <label>Série <b class="text-danger">*</b>
+                                                                        </label>
+                                                                        <select
+                                                                            class="form-control select2 select2-hidden-accessible"
+                                                                            style="width: 100%;" data-select2-id="1"
+                                                                            tabindex="-1" aria-hidden="true" required
+                                                                            name="serie">
+                                                                            <option
+                                                                                value="Ensino Fundamental Anos Iniciais 1° ao 5° Ano">
+                                                                                Ensino Fundamental Anos
+                                                                                Iniciais 1° ao 5° Ano</option>
+                                                                            <option
+                                                                                value="Ensino Fundamental Anos Iniciais 1° ao 5° Ano">
+                                                                                6° Ano - Ensino
+                                                                                Fundamental 6° ao 9° Ano</option>
+                                                                            <option
+                                                                                value="7° Ano - Ensino Fundamental 6° ao 9° Ano">
+                                                                                7° Ano - Ensino Fundamental 6°
+                                                                                ao 9° Ano</option>
+                                                                            <option
+                                                                                value="8° Ano - Ensino Fundamental 6° ao 9° Ano">
+                                                                                8° Ano - Ensino Fundamental 6°
+                                                                                ao 9° Ano</option>
+                                                                            <option
+                                                                                value="9° Ano - Ensino Fundamental 6° ao 9° Ano">
+                                                                                9° Ano - Ensino Fundamental 6°
+                                                                                ao 9° Ano</option>
+                                                                            <option value="1° Ano - Ensino Médio">1° Ano
+                                                                                -
+                                                                                Ensino Médio</option>
+                                                                            <option value="2° Ano - Ensino Médio">2° Ano
+                                                                                -
+                                                                                Ensino Médio</option>
+                                                                            <option value="3° Ano - Ensino Médio">3° Ano
+                                                                                -
+                                                                                Ensino Médio</option>
+                                                                            <option value="1° Fase - CEEBJA">1° Fase -
+                                                                                CEEBJA
+                                                                            </option>
+                                                                            <option value="2° Fase - CEEBJA">2° Fase -
+                                                                                CEEBJA
+                                                                            </option>
+                                                                            <option value="1° Ano - FACULDADE">1° Ano -
+                                                                                FACULDADE</option>
+                                                                            <option value="2° Ano - FACULDADE">2° Ano -
+                                                                                FACULDADE</option>
+                                                                            <option value="3° Ano - FACULDADE">3° Ano -
+                                                                                FACULDADE</option>
+                                                                            <option value="4° Ano - FACULDADE">4° Ano -
+                                                                                FACULDADE</option>
+                                                                            <option value="1° Modúlo - FACULDADE">1°
+                                                                                Modúlo
+                                                                                -
+                                                                                FACULDADE</option>
+                                                                            <option value="2° Modúlo - FACULDADE">2°
+                                                                                Modúlo
+                                                                                -
+                                                                                FACULDADE</option>
+                                                                            <option value="3° Modúlo - FACULDADE">3°
+                                                                                Modúlo
+                                                                                -
+                                                                                FACULDADE</option>
+                                                                            <option value="4° Modúlo - FACULDADE">4°
+                                                                                Modúlo
+                                                                                -
+                                                                                FACULDADE</option>
+                                                                        </select>
+
+                                                                    </div>
+
+                                                                    <div class="col-3">
+                                                                        <label>Turno <b class="text-danger">*</b>
+                                                                        </label>
+                                                                        <select class="form-control"
+                                                                            style="width: 100%;" required name="turno"
+                                                                            value="{{$estudante->turno}}">
+                                                                            <option value="Matutino - Manhã ">Matutino -
+                                                                                Manhã
+                                                                            </option>
+                                                                            <option value="Vespertino - Tarde ">
+                                                                                Vespertino -
+                                                                                Tarde </option>
+                                                                            <option value="Integral "> Integral
+                                                                            </option>
+                                                                            <option value="Noturno - Noite">Noturno -
+                                                                                Noite
+                                                                            </option>
+                                                                        </select>
+
+
+                                                                    </div>
+
+                                                                    <div class="col-3">
+                                                                        <label for="curso"> Curso <b
+                                                                                class="text-danger">*</b>
+                                                                        </label>
+                                                                        <input type="text" name="curso"
+                                                                            class="form-control"
+                                                                            placeholder="Exemplo, Administração  "
+                                                                            required value="{{$estudante->curso}}">
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-2">
+                                                                        <label>Cep:<b
+                                                                                class="text-danger">*</b></label></label>
+                                                                        <input name="cep" type="text" id="cep"
+                                                                            class="form-control" required
+                                                                            data-inputmask="&quot;mask&quot;: &quot; 99.999-999&quot;"
+                                                                            data-mask="" inputmode="verbatim"
+                                                                            im-insert="true" required
+                                                                            value="{{$estudante->cep}}" />
+
+                                                                    </div>
+                                                                    <div class="col-3">
+
+                                                                        <label>Rua:<b
+                                                                                class="text-danger">*</b></label></label>
+                                                                        <input name="rua" type="text" id="rua" size="60"
+                                                                            class="form-control" required
+                                                                            value="{{$estudante->rua}}" />
+
+
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <label>Número da casa:<b
+                                                                                class="text-danger">*</b></label></label>
+                                                                        <input name="numeroCasa" type="text"
+                                                                            class="form-control" required
+                                                                            value="{{$estudante->numero_casa}}" />
+
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <label>Bairro:<b
+                                                                                class="text-danger">*</b></label></label>
+                                                                        <input class="form-control" name="bairro"
+                                                                            type="text" id="bairro" size="40"
+                                                                            class="form-control" required
+                                                                            value="{{$estudante->bairro}}" />
+
+
+                                                                    </div>
+                                                                    <div class="col-2">
+
+                                                                        <label>Cidade:<b
+                                                                                class="text-danger">*</b></label></label>
+                                                                        <input name="cidade" type="text" id="cidade"
+                                                                            size="40" class="form-control" required
+                                                                            value="{{$estudante->cidade}}" />
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="modal-footer justify-content-between">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save
+                                                                        changes</button>
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-default"
-                                                                    data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save
-                                                                    changes</button>
-                                                            </div>
+
                                                         </div>
-
+                                                        <!-- /.modal-content -->
                                                     </div>
-                                                    <!-- /.modal-content -->
+                                                    <!-- /.modal-dialog -->
                                                 </div>
-                                                <!-- /.modal-dialog -->
-                            </div>
-                            </td>
-                            </tr>
-                            @endforeach
+                                            </td>
+                                        </tr>
+                                        @endforeach
 
-                            </tbody>
+                                    </tbody>
 
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                </table>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                                <ul class="pagination">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5">
+                                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                    <ul class="pagination">
 
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- /.card-body -->
+
             </div>
-            <!-- /.card-body -->
 
         </div>
-
     </div>
-</div>
 </div>
 
 
