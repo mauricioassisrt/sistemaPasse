@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Estudante;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,9 @@ class PasseController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $objetoEstudantes = Estudante::all();
+
+        return view('admin.index', compact('objetoEstudantes'));
     }
 
     /**
