@@ -201,6 +201,10 @@ class EstudanteController extends Controller
                 $objetoEstudante->cpf_responsavel_foto = $dir . "/" . $arquivoCpfMover;
                 $objetoEstudante->certidao_nascimento_aluno_foto = $dir . "/" . $arquivoCertidaoMover;
                 $objetoEstudante->possuiCpf = 0;
+                $objetoEstudante->rg_aluno_foto = "Vazio";
+                $objetoEstudante->cpf_aluno_foto = "Vazio";
+                $objetoEstudante->rg_aluno = "Aluno sem RG";
+                $objetoEstudante->cpf_aluno = "Aluno sem CPF";
                 //converter objeto em json
                 $dados = json_encode($objetoEstudante);
 
@@ -300,7 +304,7 @@ class EstudanteController extends Controller
                 $objetoEstudante->cpf_responsavel = $dadosVindoForm->cpf_responsavel;
                 $objetoEstudante->rg_responsavel_foto = $dadosVindoForm->rg_responsavel_foto;
                 $objetoEstudante->cpf_responsavel_foto = $dadosVindoForm->cpf_responsavel_foto;
-                $objetoEstudante->certidao_nascimento_aluno_foto = $dadosVindoForm->certidao_nascimento_alunoFoto;
+                $objetoEstudante->certidao_nascimento_aluno_foto = $dadosVindoForm->certidao_nascimento_aluno_foto;
                 $objetoEstudante->possuiCpf = $dadosVindoForm->possuiCpf;
                 $objetoEstudante->declaracao_matricula = $dadosVindoForm->declaracao_matricula;
                 $objetoEstudante->instituicao = $dadosVindoForm->instituicao;
@@ -311,7 +315,7 @@ class EstudanteController extends Controller
                 $objetoEstudante->cpf_aluno_foto = $dadosVindoForm->cpf_aluno_foto;
                 $objetoEstudante->rg_aluno = $dadosVindoForm->rg_aluno;
                 $objetoEstudante->cpf_aluno = $dadosVindoForm->cpf_aluno;
-                // dd($objetoEstudante->turno);
+
                 $objetoEstudante->save();
                 return view('estudante.protocolo', compact('objetoEstudante'));
             }
