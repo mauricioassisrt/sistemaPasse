@@ -162,6 +162,7 @@ class EstudanteController extends Controller
 
                 $objetoEstudante->rg_responsavel = "O Aluno possui CPF ";
                 $objetoEstudante->cpf_responsavel = "O Aluno possui CPF ";
+                $objetoEstudante->certidao_nascimento_aluno_foto = "O Aluno possui CPF ";
                 $objetoEstudante->rg_responsavel_foto = "Vazio";
                 $objetoEstudante->cpf_responsavel_foto = "Vazio";
                 $objetoEstudante->certidao_nascimento_alunoFoto = "Vazio";
