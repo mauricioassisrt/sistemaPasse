@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql-externo2'),
+    'default' => env('DB_CONNECTION', 'mysql-externo'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
             'port' =>  '3306',
             'database' => 'vJGum71NCX',
             'username' => 'vJGum71NCX',
-            'password' =>  'JVjRl6g6xs',
+            'password' =>  'PiOKDQVJ6Z',
 
         ],
         'mysql-externo2' => [
