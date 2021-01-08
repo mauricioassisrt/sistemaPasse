@@ -8,18 +8,18 @@
 
     <title>Passe Livre| Startup</title>
     {{--  ICON   --}}
-    <link rel="shortcut icon" href="img/o.png">
+    <link rel="shortcut icon" href="/img/o.png">
     {{--  FONTAWESOME   --}}
-    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
     {{--  CSS PRINCIPAL   --}}
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
     {{--  SELECT   --}}
-    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="/css/select2.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="css/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="/css/select2-bootstrap4.min.css">
     {{--  SELECT   --}}
     <!-- DataTables -->
-    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -205,7 +205,7 @@
     <script src="js/jquery.min.js"></script>
 
     <!-- Jquery Validation -->
-    <script src="js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
     <!-- SELECT -->
     <script src="js/select2.full.min.js"></script>
     <!-- INPUT MASK  -->
@@ -213,13 +213,13 @@
     <!-- DATA RANGE PICKER  -->
     <script src="js/daterangepicker.js"></script>
     <!-- DataTables -->
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script>
-    <script src="js/dataTables.responsive.min.js"></script>
-    <script src="js/responsive.bootstrap4.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/adminlte.min.js"></script>
-    <script src="js/demo.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/js/dataTables.responsive.min.js"></script>
+    <script src="/js/responsive.bootstrap4.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/adminlte.min.js"></script>
+    <script src="/js/demo.js"></script>
 
 
     <script type="text/javascript">

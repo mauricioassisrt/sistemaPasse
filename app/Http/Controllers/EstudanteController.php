@@ -12,86 +12,33 @@ class EstudanteController extends Controller
 {
 
 
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('estudante.index');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-    public function consultarSituacao(Request $request)
+    //PROTOCOLO VIEW
+    public function consultarSituacao()
     {
         return view('estudante.consultar');
     }
+    //PROTOCOLO CONSULTA E REDIRECT
+    public function consultarSituacaoParametros(Request $request)
+    {
+
+        try {
+            if ($request->consultaProtocolo) {
+                $objetoEstudante = Estudante::where([['protocolo', '=', $request->consultaProtocolo]])->first();
+                return view('estudante.protocolo', compact('objetoEstudante'));
+            } elseif ($request->consultaCPF) {
+                $objetoEstudante = Estudante::where([['cpf_aluno', '=', $request->consultaCPF]])->first();
+                return view('estudante.protocolo', compact('objetoEstudante'));
+            }
+        } catch (\Throwable $th) {
+            // dd($th);
+             return view('layout.erro', compact('th'));
+        }
+    }
+
     //pega os dados do formulario  Novo cadastro de passe livre e adiciona no objeto estudante  e direciona para view
     //verificacao cpf
     public  function verificaCpf(Request $request)
@@ -125,15 +72,12 @@ class EstudanteController extends Controller
     public function naoPossuiCpf(Request $request)
     {
         try {
-
             $dadosPessoaisAluno =  $request->dadosPessoais;
-
             return view('estudante.dadosResponsavel',  compact('dadosPessoaisAluno'));
         } catch (\Throwable $th) {
             return view('layout.erro', compact('th'));
         }
     }
-
     // ao preencher os dados ou da tela do aluno ou da tela do responsavel ele é direcionado para este metodo, dados estes pessoais
     //onde o mesmo verifica as informações que vieram do formulario
     public function dadosAluno(Request $request)

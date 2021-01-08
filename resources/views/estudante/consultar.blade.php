@@ -14,18 +14,20 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" id="" novalidate="novalidate">
+                <form action="{{ route('cpf.protocolo') }}" method="post">
+                    @csrf
                     <div class="card-body">
                         <div class="callout callout-danger">
                             <h5>Atenção </h5>
 
-                            <p><b> Caso já tenha emitido solicitado digite ou o CPF ou o protocolo gerado e enviado via
-                                    e-mail</b></p>
+                            <p><b> Informe o CPF e o Número de protocolo   </b></p>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">CPF </label>
-                            <input type="text" name="consultaCPF" class="form-control"
-                                placeholder="Digite somente números" required>
+
+                                <input type="text" class="form-control" name="consultaCPF"
+                                data-inputmask="&quot;mask&quot;: &quot; 999.999.999-99&quot;" data-mask="" inputmode="verbatim"
+                                im-insert="true" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Protocolo </label>
