@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
+/public/alunos
 .env.backup
+vendor
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -283,3 +285,5 @@ mysql/sys/x@0024wait_classes_global_by_latency.frm
 mysql/sys/x@0024waits_by_host_by_latency.frm
 mysql/sys/x@0024waits_by_user_by_latency.frm
 mysql/sys/x@0024waits_global_by_latency.frm
+vendor
+vendor/bin/carbon
