@@ -14,7 +14,7 @@ class CreateEstudanteTable extends Migration
     public function up()
     {
         Schema::create('estudantes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->date('data_cadastro')->nullable($value = true);
             $table->string('protocolo')->nullable($value = true);
             $table->string('nome_aluno')->nullable($value = true);
@@ -55,6 +55,6 @@ class CreateEstudanteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estudante');
+        Schema::dropIfExists('estudantes');
     }
 }

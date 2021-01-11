@@ -16,28 +16,6 @@ class EstudanteController extends Controller
     {
         return view('estudante.index');
     }
-    //PROTOCOLO VIEW
-    public function consultarSituacao()
-    {
-        return view('estudante.consultar');
-    }
-    //PROTOCOLO CONSULTA E REDIRECT
-    public function consultarSituacaoParametros(Request $request)
-    {
-
-        try {
-            if ($request->consultaProtocolo) {
-                $objetoEstudante = Estudante::where([['protocolo', '=', $request->consultaProtocolo]])->first();
-                return view('estudante.protocolo', compact('objetoEstudante'));
-            } elseif ($request->consultaCPF) {
-                $objetoEstudante = Estudante::where([['cpf_aluno', '=', $request->consultaCPF]])->first();
-                return view('estudante.protocolo', compact('objetoEstudante'));
-            }
-        } catch (\Throwable $th) {
-            // dd($th);
-             return view('layout.erro', compact('th'));
-        }
-    }
 
     //pega os dados do formulario  Novo cadastro de passe livre e adiciona no objeto estudante  e direciona para view
     //verificacao cpf

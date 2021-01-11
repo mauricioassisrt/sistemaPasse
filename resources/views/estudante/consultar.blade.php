@@ -17,11 +17,18 @@
                 <form action="{{ route('cpf.protocolo') }}" method="post">
                     @csrf
                     <div class="card-body">
+
+
                         <div class="callout callout-danger">
                             <h5>Atenção </h5>
 
                             <p><b> Informe o CPF e o Número de protocolo   </b></p>
                         </div>
+                        <div class="alert alert-danger alert-dismissible " style="display: {{ $retorno }}">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h5><i class="icon fas fa-ban"></i> ATENÇÃO !</h5>
+                            Não foi encontrado nenhum dado relacionado ao CPF ou número de protocolo: {{ $cpf}} {{ $protocolo   }}
+                          </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">CPF </label>
 

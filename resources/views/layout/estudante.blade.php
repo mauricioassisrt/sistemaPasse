@@ -20,6 +20,7 @@
     {{--  SELECT   --}}
     <!-- DataTables -->
     <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -128,7 +129,7 @@
                         </li>
                         <li class="nav-item">
 
-                            <a href="{{ route('admin.index') }}" class="nav-link active">
+                            <a href="" class="nav-link active">
                                 <i class="fas fa-user-graduate"></i>
                                 <p>Cadastros Realizados </p>
                             </a>
@@ -201,17 +202,17 @@
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="js/app.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/jquery.min.js"></script>
 
     <!-- Jquery Validation -->
     <script src="/js/jquery.validate.min.js"></script>
     <!-- SELECT -->
-    <script src="js/select2.full.min.js"></script>
+    <script src="/js/select2.full.min.js"></script>
     <!-- INPUT MASK  -->
-    <script src="js/jquery.inputmask.bundle.min.js"></script>
+    <script src="/js/jquery.inputmask.bundle.min.js"></script>
     <!-- DATA RANGE PICKER  -->
-    <script src="js/daterangepicker.js"></script>
+    <script src="/js/daterangepicker.js"></script>
     <!-- DataTables -->
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap4.min.js"></script>

@@ -1,16 +1,14 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
-
+Route::get('/', function () {
+    return view('index');
+});
 Auth::routes();
+
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //ROTA USUARIO
 Route::resource('usuarios', 'UserController')->names('user')->parameters(['usuarios' => 'user']);
-//ROTA ADMIN PASSE
-Route::resource('admin', 'PasseController')->names('admin');
-
 //ROTA ESTUDANTE
 Route::resource('estudante', 'EstudanteController')->names('estudante')->parameters(['estudante' => 'estudante']);
 Route::post('verificaCpf', 'EstudanteController@verificaCpf')->name('verifica.cpf');
@@ -20,20 +18,18 @@ Route::post('dadosDaSerie', 'EstudanteController@dadosAluno')->name('dados.serie
 Route::post('localizacao', 'EstudanteController@matricula')->name('ende');
 Route::post('protocoloGerar', 'EstudanteController@finaliza')->name('finaliza');
 
+//Status
+Route::get('status', 'StatusController@index')->name('status');
+Route::get('status/novo', 'StatusController@create')->name('status.create');
+Route::post('status/store', 'StatusController@store')->name('status.store');
+Route::get('status/edit/{status}', 'StatusController@edit')->name('status.edit');
+Route::patch('status/update/{status}', 'StatusController@update')->name('status.update');
+Route::get('status/deletar/{status}', 'StatusController@destroy')->name('status.delete');
+Route::get('status/pesquisar', 'StatusController@search')->name('status.pesquisar');
 
+//ANDAMENTO
+Route::get('andamentos/pesquisar', 'AndamentoController@search')->name('andamentos.pesquisar');
+Route::get('andamentos/consulta', 'AndamentoController@consulta_situacao')->name('andamentos.consulta');
+Route::post('cpf/protocolo', 'AndamentoController@consultarSituacaoParametros')->name('cpf.protocolo');
 //CONSULTAR PROTOCOLO DE
-Route::get('consultar', 'EstudanteController@consultarSituacao')->name('consultar.situacao');
-Route::post('cpf/protocolo', 'EstudanteController@consultarSituacaoParametros')->name('cpf.protocolo');
-
-/// MAIL
-// Route::get('send-mail', function () {
-
-//     $details = [
-//         'title' => 'Mail from ItSolutionStuff.com',
-//         'body' => 'This is for testing email using smtp'
-//     ];
-
-//     \Mail::to('mauricioassisrt@gmail.com')->send(new \App\Mail\MyTestMail($details));
-
-//     dd("Email is Sent.");
-// });
+Route::get('consultar', 'AndamentoController@consultarSituacao')->name('consultar.situacao');

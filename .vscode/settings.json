@@ -22,5 +22,6 @@
             "database": "${workspaceFolder:sistemaPasse}/database/app_passe.sqlite"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "git.ignoreLimitWarning": true
 }
