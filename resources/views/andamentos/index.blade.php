@@ -22,14 +22,14 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+                                <table id="tabela" class="table table-bordered table-striped dataTable dtr-inline"
                                     role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending">
-                                                Data</th>
+                                                Data do Cadastro </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending">
@@ -122,7 +122,12 @@
                                                     </i>
                                                     Detalhes
                                                 </a>
+                                                <a href="{{ url('andamentos/iniciar') }}/{{$estudante->id  }}" class="btn btn-success" >
+                                                <i class="fa fa-tasks ">
 
+                                                </i>
+                                               Andamentos
+                                            </a>
 
                                                 <div class="modal fade" id="modal-xl-{{$estudante->id}}"
                                                     style="display: none;" aria-hidden="true">
@@ -396,7 +401,10 @@
                             </div>
                         </div>
                         <div class="row">
+
                             <div class="col-sm-12 col-md-5">
+                                {{ $objetoEstudantes->links() }}
+                            </ul>
                                 <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
                                 </div>
                             </div>
@@ -404,7 +412,6 @@
                                 <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
                                     <ul class="pagination">
 
-                                    </ul>
                                 </div>
                             </div>
                         </div>

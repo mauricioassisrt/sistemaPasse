@@ -28,6 +28,8 @@ Route::get('status/deletar/{status}', 'StatusController@destroy')->name('status.
 Route::get('status/pesquisar', 'StatusController@search')->name('status.pesquisar');
 
 //ANDAMENTO
+Route::get('andamentos', 'AndamentoController@index')->name('andamentos');
+Route::get('andamentos/iniciar/{objetoEstudante}', 'AndamentoController@realizar_andamento')->name('andamento.iniciar');
 Route::get('andamentos/pesquisar', 'AndamentoController@search')->name('andamentos.pesquisar');
 Route::get('andamentos/consulta', 'AndamentoController@consulta_situacao')->name('andamentos.consulta');
 Route::post('cpf/protocolo', 'AndamentoController@consultarSituacaoParametros')->name('cpf.protocolo');

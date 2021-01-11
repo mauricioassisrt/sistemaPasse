@@ -7,171 +7,113 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Passe Livre| Startup</title>
-    {{--  ICON   --}}
+    {{-- ICON --}}
     <link rel="shortcut icon" href="/img/o.png">
-    {{--  FONTAWESOME   --}}
+    {{-- FONTAWESOME --}}
     <link rel="stylesheet" href="/css/fontawesome-all.min.css">
-    {{--  CSS PRINCIPAL   --}}
+    {{-- CSS PRINCIPAL --}}
     <link rel="stylesheet" href="/css/app.css">
-    {{--  SELECT   --}}
+    {{-- SELECT --}}
     <link rel="stylesheet" href="/css/select2.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="/css/select2-bootstrap4.min.css">
-    {{--  SELECT   --}}
+    {{-- SELECT --}}
     <!-- DataTables -->
     <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css">
 
 </head>
 
-<body class="hold-transition sidebar-mini">
-
+<body class="sidebar-mini">
     <div class="wrapper">
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-success">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="{{ route('home') }}" role="button"><i
-                            class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 @if (Auth::check())
-                <!-- Messages Dropdown Menu -->
-                <li>
-
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <!-- Messages Dropdown Menu -->
+                    <li>
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"> Logout
-                        <i class="fas fa-sign-in-alt"></i>
-
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
                 @endif
                 <!-- Notifications Dropdown Menu -->
                 <span class="fa fa-sign-out"></span>
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-cog"></i>
-
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Nome usuário </span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-
-                        </a>
-
-                </li> --}}
-                {{-- <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-            class="fas fa-th-large"></i></a>
-      </li> --}}
             </ul>
         </nav>
         <!-- /.navbar -->
-
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar elevation-4 sidebar-dark-green">
             <!-- Brand Logo -->
-            <a href="{{ route('home') }}" class="brand-link navbar-success">
+            <a href="/" class="brand-link navbar-success">
                 <i class="fa fa-bus" aria-hidden="true">
                 </i>
                 <span class="brand-text font-weight-light">Passe Livre</span>
             </a>
-
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-
-
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block"> </a>
-                    </div>
-                </div> --}}
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
                         @if (Auth::check())
+                            <li class="nav-item">
 
-                        <li class="nav-item">
-
-                            <a href="{{ route('home') }}" class="nav-link active">
-                                <i class="fas fa-tachometer-alt"></i>
-                                <p>Home </p>
-                            </a>
-
-
-                        </li>
-                        <li class="nav-item">
-
-                            <a href="" class="nav-link active">
-                                <i class="fas fa-user-graduate"></i>
-                                <p>Cadastros Realizados </p>
-                            </a>
-
-
-                        </li>
+                                <a href="{{ route('home') }}" class="nav-link active">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <p>Home </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('andamentos') }}" class="nav-link active">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <p>Cadastros Realizados </p>
+                                </a>
+                            </li>
                         @endif
-
                         <li class="nav-item has-treeview menu-close">
-                            <a href="{{route('consultar.situacao')}}" class="nav-link active">
+                            <a href="{{ route('consultar.situacao') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-search"></i>
                                 <p>
-
                                     Consultar Passe
                                 </p>
+
                             </a>
-
-
-
                         </li>
                         <li class="nav-item">
-
-                            <a href="{{route('estudante.index')}}" class="nav-link active">
+                            <a href="{{ route('estudante.index') }}" class="nav-link active">
                                 <i class="fas fa-user nav-icon"></i>
                                 <p>Solicitar Passe</p>
                             </a>
-
-
                         </li>
-
+                        <li class="nav-item">
+                            <a href="{{ route('status') }}" class="nav-link active">
+                                <i class="fas fa-info nav-icon"></i>
+                                <p>Status</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <br>
             @yield('content')
-
         </div>
         <!-- /.content-wrapper -->
 
@@ -193,7 +135,7 @@
                 Solutions for your company
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020 - {{  date('Y') }} <a href="https://nautilus.solution.com.br">Nautilus
+            <strong>Copyright &copy; 2020 - {{ date('Y') }} <a href="https://nautilus.solution.com.br">Nautilus
                     Solutions</a>.</strong> All rights reserved.
         </footer>
     </div>
@@ -204,9 +146,11 @@
     <!-- jQuery -->
     <script src="/js/app.js"></script>
     <script src="/js/jquery.min.js"></script>
+    <script src="/js/adminlte.js"></script>
 
     <!-- Jquery Validation -->
     <script src="/js/jquery.validate.min.js"></script>
+
     <!-- SELECT -->
     <script src="/js/select2.full.min.js"></script>
     <!-- INPUT MASK  -->
@@ -224,19 +168,23 @@
 
 
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
 
             //Initialize Select2 Elements
             $('.select2bs4').select2({
-              theme: 'bootstrap4'
+                theme: 'bootstrap4'
             })
 
             //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            $('#datemask').inputmask('dd/mm/yyyy', {
+                'placeholder': 'dd/mm/yyyy'
+            })
             //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            $('#datemask2').inputmask('mm/dd/yyyy', {
+                'placeholder': 'mm/dd/yyyy'
+            })
             //Money Euro
             $('[data-mask]').inputmask()
 
@@ -244,16 +192,16 @@
             $('#reservation').daterangepicker()
             //Date range picker with time picker
             $('#reservationtime').daterangepicker({
-              timePicker: true,
-              timePickerIncrement: 30,
-              locale: {
-                format: 'MM/DD/YYYY hh:mm A'
-              }
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                }
             })
             $("#example1").DataTable({
                 "responsive": true,
                 "autoWidth": false,
-             });
+            });
             // $('#example2').DataTable({
             //     "paging": true,
             //     "lengthChange": false,
@@ -276,11 +224,11 @@
             //   $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
             // });
 
-            $("input[data-bootstrap-switch]").each(function(){
-              $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            $("input[data-bootstrap-switch]").each(function() {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
             });
 
-          })
+        })
         // $(document).ready(function () {
         //   $.validator.setDefaults({
         //     submitHandler: function () {
@@ -335,6 +283,11 @@
         //     }
         //   });
         // });
+
+        $('#tabela').dataTable( {
+            paging: false,
+
+        } );
     </script>
 
 </body>

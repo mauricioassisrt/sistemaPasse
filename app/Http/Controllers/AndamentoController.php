@@ -16,7 +16,13 @@ class AndamentoController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $objetoEstudantes = Estudante::paginate(2);
+
+            return view('andamentos.index', compact('objetoEstudantes'));
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     /**
@@ -104,13 +110,13 @@ class AndamentoController extends Controller
             } else {
                 $dados = array(
                     'retorno' =>  "true",
-                    'cpf'=> $request->consultaCPF,
-                    'protocolo'=> $request->consultaProtocolo,
+                    'cpf' => $request->consultaCPF,
+                    'protocolo' => $request->consultaProtocolo,
                 );
                 return view('estudante.consultar', $dados);
             }
         } catch (\Throwable $th) {
-             dd($th);
+            dd($th);
             //return view('layout.erro', compact('th'));
         }
     }
@@ -119,9 +125,20 @@ class AndamentoController extends Controller
     {
         $dados = array(
             'retorno' =>  "none",
-            'cpf'=>'',
-            'protocolo'=>'',
+            'cpf' => '',
+            'protocolo' => '',
         );
         return view('estudante.consultar', $dados);
+    }
+    //REALIZAR ANDAMENTO USER AUTENTICADO
+    public function realizar_andamento(Estudante $objetoEstudante)
+    {
+        try {
+
+            return view('andamentos.detalhes', compact('objetoEstudante'));
+        } catch (\Throwable $th) {
+            dd($th);
+            //return view('layout.erro', compact('th'));
+        }
     }
 }
