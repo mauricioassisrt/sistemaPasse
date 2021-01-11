@@ -82,6 +82,12 @@
                                     <p>Cadastros Realizados </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('status') }}" class="nav-link active">
+                                    <i class="fas fa-info nav-icon"></i>
+                                    <p>Status</p>
+                                </a>
+                            </li>
                         @endif
                         <li class="nav-item has-treeview menu-close">
                             <a href="{{ route('consultar.situacao') }}" class="nav-link active">
@@ -98,12 +104,7 @@
                                 <p>Solicitar Passe</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('status') }}" class="nav-link active">
-                                <i class="fas fa-info nav-icon"></i>
-                                <p>Status</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
