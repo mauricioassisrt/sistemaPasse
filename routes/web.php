@@ -10,7 +10,9 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //ROTA USUARIO
 Route::resource('usuarios', 'UserController')->names('user')->parameters(['usuarios' => 'user']);
 //ROTA ESTUDANTE
-Route::resource('estudante', 'EstudanteController')->names('estudante')->parameters(['estudante' => 'estudante']);
+
+Route::get('estudante', 'EstudanteController@index')->name('estudante.index');
+Route::post('estudante/store', 'EstudanteController@store')->name('estudante.store');
 Route::post('verificaCpf', 'EstudanteController@verificaCpf')->name('verifica.cpf');
 Route::post('dadosResponsavel', 'EstudanteController@naoPossuiCpf')->name('nao.possui.cpf');
 Route::post('dadosAluno', 'EstudanteController@possuiCpf')->name('possui.cpf');

@@ -14,7 +14,7 @@ class EstudanteController extends Controller
 
     public function index()
     {
-        return view('estudante.index');
+        return view('estudante.cadastro_estudante');
     }
 
     //pega os dados do formulario  Novo cadastro de passe livre e adiciona no objeto estudante  e direciona para view

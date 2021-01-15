@@ -101,11 +101,11 @@ class AndamentoController extends Controller
     public function consultarSituacaoParametros(Request $request)
     {
         try {
-            $objetoEstudante = Estudante::where([['protocolo', '=', $request->consultaProtocolo]])->first();
-            $objetoEstudante = Estudante::where([['cpf_aluno', '=', $request->consultaCPF]])->first();
-            if ($request->consultaProtocolo && $objetoEstudante) {
+            if (!empty($request->consultaProtocolo) ){
+                $objetoEstudante = Estudante::where([['protocolo', '=', $request->consultaProtocolo]])->first();
                 return view('andamentos.detalhes', compact('objetoEstudante'));
-            } elseif ($request->consultaCPF && $objetoEstudante) {
+            } elseif (!empty($request->consultaCPF)) {
+                $objetoEstudante = Estudante::where([['cpf_aluno', '=', $request->consultaCPF]])->first();
                 return view('andamentos.detalhes', compact('objetoEstudante'));
             } else {
                 $dados = array(
