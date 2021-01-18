@@ -184,7 +184,7 @@
                                 class="fa fa-bus pull-right"></i>
                             Voltar </a>
 
-                        <a href="#" class="btn btn-success btn-lg " id="botaoCpfAluno"> <i
+                        <a href="#" class="btn btn-success btn-lg " id="form_cadastra_cpf_aluno"> <i
                                 class="fas fa-long-arrow-alt-right"></i>
                             Próximo </a>
                     </div>
@@ -231,14 +231,14 @@
                                id="certidaoNascimento" required>
 
                     </div>
-                    <div class="card-footer" id="footer-cpf-responsavel">
+                    <div class="card-footer">
 
                         <a href="#" class="btn btn-success btn-lg " id="btndadosAluno_tela_responsavel"> <i
                                 class="fa fa-bus pull-right"></i>
                             Voltar </a>
 
                         <a href="#" class="btn btn-success btn-lg " id="form_cadastra_dados_responsavel"
-                           style="display: none"> <i class="fas fa-long-arrow-alt-right"></i>
+                        > <i class="fas fa-long-arrow-alt-right"></i>
                             Próximo </a>
                     </div>
                 </div>
@@ -260,34 +260,49 @@
                     <div class="form-group">
                         <label for="dados"> Foto do comprovante de residênca<b
                                 class="text-danger">*</b></label><br/>
-                        <input type="file" name="comprovanteResidencia" required>
+                        <input type="file" name="comprovanteResidencia" class="input_endereco" required>
 
                     </div>
                     <div class="form-group">
                         <label>Cep:<b class="text-danger">*</b></label></label>
-                        <input name="cep" type="text" id="cep" value="" class="form-control" required
+                        <input name="cep" type="text" id="cep" value="" class="form-control input_endereco" required
                                data-inputmask="&quot;mask&quot;: &quot; 99.999-999&quot;" data-mask=""
                                inputmode="verbatim" im-insert="true" required/>
                     </div>
                     <div class="form-group">
                         <label>Rua:<b class="text-danger">*</b></label></label>
-                        <input name="rua" type="text" id="rua" size="60" class="form-control" required/>
+                        <input name="rua" type="text" id="rua" size="60" class="form-control input_endereco" required/>
                     </div>
                     <div class="form-group">
                         <label>Número da casa:<b class="text-danger">*</b></label></label>
-                        <input name="numeroCasa" type="text" class="form-control" required/>
+                        <input name="numeroCasa" type="text" class="form-control input_endereco" required/>
                     </div>
 
                     <div class="form-group">
                         <label>Bairro:<b class="text-danger">*</b></label></label>
-                        <input class="form-control" name="bairro" type="text" id="bairro" size="40"
+                        <input class="form-control input_endereco" name="bairro" type="text" id="bairro" size="40"
                                class="form-control" required/>
                     </div>
                     <div class="form-group">
                         <label>Cidade:<b class="text-danger">*</b></label></label>
-                        <input name="cidade" type="text" id="cidade" size="40" class="form-control" required/>
+                        <input name="cidade" type="text" id="cidade" size="40" class="form-control input_endereco"
+                               required/>
                     </div>
+                    <div class="card-footer" id="footer-endereco">
 
+                        <a href="#" class="btn btn-success btn-lg " id="btn_voltarcpf_responsavel_tela"
+                           style="display: none"> <i
+                                class="fa fa-bus pull-right"></i>
+                            Voltar para dados do responsável </a>
+                        <a href="#" class="btn btn-success btn-lg " id="btn_voltar_dados_aluno" style="display: none">
+                            <i
+                                class="fa fa-bus pull-right"></i>
+                            Voltar para dados do Aluno </a>
+
+                        <a href="#" class="btn btn-success btn-lg " id="form_cadastra_endereco"
+                        > <i class="fas fa-long-arrow-alt-right"></i>
+                            Próximo </a>
+                    </div>
                 </div>
                 <!--------------------------------FIM ENDERECO   -------------------------!>
                 <!--------------------------------ESCOLA   -------------------------!>
@@ -377,6 +392,17 @@
                                   name="obs"></textarea>
 
                     </div>
+                    <div class="card-footer">
+
+                        <a href="#" class="btn btn-success btn-lg " id="btn_voltar_endereco"> <i
+                                class="fa fa-bus pull-right"></i>
+                            Voltar </a>
+
+                        <a href="#" class="btn btn-success btn-lg " id=""
+                        > <i class="fas fa-long-arrow-alt-right"></i>
+                            Finalizar Cadastro  </a>
+                    </div>
+
                 </div>
                 <!--------------------------------------FIM ESCOLA-------------------------------------->
             </div>
@@ -415,8 +441,8 @@
                 }
             });
         });
+        //verifica dados responsavel
         $(function () {
-            $("#tab").tab();
             $("#form_cadastra_dados_responsavel").click(function () {
                 var vazios = $(".dados_responsavel").filter(function () {
                     return !this.value;
@@ -429,116 +455,88 @@
                 } else {
                     alert("Eureka1");
                     $("#cpf_responsavel").hide();
+                    $('#btn_voltarcpf_responsavel_tela').show();
                     $('#endereco').show();
+
                 }
             });
         });
+        //verifica dados do aluno
         $(function () {
-            $("#tab").tab();
-            $("#botaoCpfAluno").click(function () {
+            $("#form_cadastra_cpf_aluno").click(function () {
                 var vazios = $(".cpf_aluno").filter(function () {
                     return !this.value;
                 }).get();
-                alert("Vazios");
+
                 if (vazios.length) {
                     $(vazios).addClass('vazio');
                     alert("Todos os campos devem ser preenchidos.");
                     return false;
                 } else {
-                    alert("Eureka");
+                    alert("Eureka1");
                     $("#possui_cpf_aluno").hide();
+                    $('#btn_voltar_dados_aluno').show();
                     $('#endereco').show();
+
                 }
             });
         });
+        //verifica endereco
+        $(function () {
+            $("#form_cadastra_endereco").click(function () {
+                var vazios = $(".input_endereco").filter(function () {
+                    return !this.value;
+                }).get();
+
+                if (vazios.length) {
+                    $(vazios).addClass('vazio');
+                    alert("Todos os campos do endereço que devem ser preenchidos!!!!");
+                    return false;
+                } else {
+                    alert("Eureka1");
+                    $("#endereco").hide();
+                    $('#escola').show();
+
+                }
+            });
+        });
+
         //voltar tela aluno
-        $("#btndadosAluno").click(function() {
+        $("#btndadosAluno").click(function () {
             alert('no btndadosAluno')
             $("#dados_aluno").show();
             $('#cpf_responsavel').hide();
             $('#possui_cpf_aluno').hide();
             alert('aluno');
         });
-        $("#btndadosAluno_tela_responsavel").click(function() {
+        //voltar tela aluno
+        $("#btndadosAluno_tela_responsavel").click(function () {
             alert('no btndadosAluno_tela_responsavel')
             $("#dados_aluno").show();
             $('#cpf_responsavel').hide();
 
         });
-        /* ao clicar no botão proximo exibe a nova div e esconde a antiga
-                        $("#botaoDadosPessoais").click(function() {
 
-                            //verifica o valor do radio buton se cpf true ou false
-                            var valor_radio_cpf = $('input[name=customRadio]:checked', '#confirma_cpf').val();
-                            //caso seja true o aluno selecionou que possue cpf
-                            if (valor_radio_cpf === 'true') {
-                                alert('no if');
-                                $("#dados_aluno").hide();
-                                $('#possui_cpf_aluno').show();
-                                //caso seja false o aluno não possue cpf
-                            } else if (valor_radio_cpf == 'false') {
-                                alert('no else' + valor_radio_cpf);
-                                $("#dados_aluno").hide();
-                                $('#cpf_responsavel').show();
-                            }
+        //voltar tela dados responsavel
+        $("#btn_voltarcpf_responsavel_tela").click(function () {
 
-                        });
+            $("#cpf_responsavel").show();
+            $('#endereco').hide();
 
-                        $("#btndadosAluno").click(function() {
-                            alert('no btndadosAluno')
-                            $("#dados_aluno").show();
-                            $('#cpf_responsavel').hide();
-                            $('#possui_cpf_aluno').hide();
-                            alert('aluno');
-                        });
+        });
+        //voltar tela dados aluno
+        $("#btn_voltar_dados_aluno").click(function () {
 
-                        $("#btndadosAluno_tela_responsavel").click(function() {
-                            alert('no btndadosAluno_tela_responsavel')
-                            $("#dados_aluno").show();
-                            $('#cpf_responsavel').hide();
+            $("#possui_cpf_aluno").show();
+            $('#endereco').hide();
 
-                        });
-                        $("#certidaoNascimento").click(function() {
+        });
+        //voltar tela endereco
+        $("#btn_voltar_endereco").click(function () {
 
-                            var vazio = true;
-                            $('input[type="text"]').each(function() {
-                                if ($(this).val() != "") {
-                                    vazio = false;
-                                    alert($('input[type="text"]').val());
-                                    return false;
-                                }
-                            });
+            $("#endereco").show();
+            $('#escola').hide();
 
-                            //caso seja diferente de false exibe o div footer, caso esteja algum em branco nao exibe a div
-                            if (vazio === false) {
-                                $("#botaoEndereco").show();
-
-                            } else {
-                                alert('Possui campos de preenchimento obrigatório')
-                            }
-                        });
-
-
-
-                        // Primeira DIV dados do aluno
-                        //verifica ao clicar em possui cpf se os inputs estão preechidos
-                        $("#cpfAluno").click(function() {
-                            var empty1 = true;
-                            $('input[type="text"]').each(function() {
-                                if ($(this).val() != "") {
-                                    empty1 = false;
-                                    return false;
-                                }
-                            });
-
-                            //caso seja diferente de false exibe o div footer, caso esteja algum em branco nao exibe a div
-                            if (empty1 == false) {
-                                $("#botaoEnderecoCpfAluno").show();
-                            } else {
-                                alert('Possui campos de preenchimento obrigatório')
-                            }
-                        });
-         */
-
+        });
     </script>
 @endsection
