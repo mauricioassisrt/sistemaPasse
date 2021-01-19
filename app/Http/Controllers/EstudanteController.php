@@ -185,63 +185,64 @@ class EstudanteController extends Controller
     }
     //metodo de finalização de cadastro, neste ele irá pegar todas as informações vinda do formulario e salvar no banco de dados
 
-    public function finaliza(Request $request)
+    public function store(Request $request)
     {
         try {
-            $objetoEstudante = new Estudante();
-            //decode JSON dados aluno
-            $dadosVindoForm = json_decode($request->dadosPessoaisAluno);
+            dd($request);
+//            $objetoEstudante = new Estudante();
+//            //decode JSON dados aluno
+//            $dadosVindoForm = json_decode($request->dadosPessoaisAluno);
+//
+//            if ($request->hasFile('comprovanteResidencia')) {
+//                //Foto atribui o arquivo vindo do request em uma variavel
+//                $comprovanteResidencia = $request->file('comprovanteResidencia');
+//                if ($dadosVindoForm->possuiCpf == 0) {
+//                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
+//                    $dir = "alunos" . '/' . $dadosVindoForm->cpf_responsavel;
+//                } else {
+//                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
+//                    $dir = "alunos" . '/' . $dadosVindoForm->cpf_aluno;
+//                }
+//                //pega a extenção
+//                $extencao = $comprovanteResidencia->guessClientExtension();
+//                //renomeia a imagem
+//                $nomeImagem =  $dadosVindoForm->nome_aluno . "-COMPROVANTE-RESIDENCIA" . "." . $extencao;
+//                //move a imagem para a pasta
+//                $comprovanteResidencia->move($dir, $nomeImagem);
+//                //atribui ela no objeto
+//                $objetoEstudante->comprovante_residencia = $dir . '/' . $nomeImagem;
+//
+//                $objetoEstudante->cep = $request->cep;
+//                $objetoEstudante->rua = $request->rua;
+//                $objetoEstudante->numero_casa = $request->numeroCasa;
+//                $objetoEstudante->bairro = $request->bairro;
+//                $objetoEstudante->cidade = $request->cidade;
+//                //protocolo formado por dia mes ano hora minutos
+//                $objetoEstudante->protocolo = date('dmYHi');
+//                $objetoEstudante->data_cadastro = date('Y-m-d');
+//                $objetoEstudante->nome_aluno = $dadosVindoForm->nome_aluno;
+//                $objetoEstudante->responsavel = $dadosVindoForm->responsavel;
+//                $objetoEstudante->naturalidade = $dadosVindoForm->naturalidade;
+//                $objetoEstudante->telefone = $dadosVindoForm->telefone;
+//                $objetoEstudante->rg_responsavel = $dadosVindoForm->rg_responsavel;
+//                $objetoEstudante->cpf_responsavel = $dadosVindoForm->cpf_responsavel;
+//                $objetoEstudante->rg_responsavel_foto = $dadosVindoForm->rg_responsavel_foto;
+//                $objetoEstudante->cpf_responsavel_foto = $dadosVindoForm->cpf_responsavel_foto;
+//                $objetoEstudante->certidao_nascimento_aluno_foto = $dadosVindoForm->certidao_nascimento_aluno_foto;
+//                $objetoEstudante->possuiCpf = $dadosVindoForm->possuiCpf;
+//                $objetoEstudante->declaracao_matricula = $dadosVindoForm->declaracao_matricula;
+//                $objetoEstudante->instituicao = $dadosVindoForm->instituicao;
+//                $objetoEstudante->serie = $dadosVindoForm->serie;
+//                $objetoEstudante->turno = $dadosVindoForm->turno;
+//                $objetoEstudante->curso = $dadosVindoForm->curso;
+//                $objetoEstudante->rg_aluno_foto =  $dadosVindoForm->rg_aluno_foto;
+//                $objetoEstudante->cpf_aluno_foto = $dadosVindoForm->cpf_aluno_foto;
+//                $objetoEstudante->rg_aluno = $dadosVindoForm->rg_aluno;
+//                $objetoEstudante->cpf_aluno = $dadosVindoForm->cpf_aluno;
+//
+//                $objetoEstudante->save();
+//                return view('estudante.protocolo', compact('objetoEstudante'));
 
-            if ($request->hasFile('comprovanteResidencia')) {
-                //Foto atribui o arquivo vindo do request em uma variavel
-                $comprovanteResidencia = $request->file('comprovanteResidencia');
-                if ($dadosVindoForm->possuiCpf == 0) {
-                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
-                    $dir = "alunos" . '/' . $dadosVindoForm->cpf_responsavel;
-                } else {
-                    //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
-                    $dir = "alunos" . '/' . $dadosVindoForm->cpf_aluno;
-                }
-                //pega a extenção
-                $extencao = $comprovanteResidencia->guessClientExtension();
-                //renomeia a imagem
-                $nomeImagem =  $dadosVindoForm->nome_aluno . "-COMPROVANTE-RESIDENCIA" . "." . $extencao;
-                //move a imagem para a pasta
-                $comprovanteResidencia->move($dir, $nomeImagem);
-                //atribui ela no objeto
-                $objetoEstudante->comprovante_residencia = $dir . '/' . $nomeImagem;
-
-                $objetoEstudante->cep = $request->cep;
-                $objetoEstudante->rua = $request->rua;
-                $objetoEstudante->numero_casa = $request->numeroCasa;
-                $objetoEstudante->bairro = $request->bairro;
-                $objetoEstudante->cidade = $request->cidade;
-                //protocolo formado por dia mes ano hora minutos
-                $objetoEstudante->protocolo = date('dmYHi');
-                $objetoEstudante->data_cadastro = date('Y-m-d');
-                $objetoEstudante->nome_aluno = $dadosVindoForm->nome_aluno;
-                $objetoEstudante->responsavel = $dadosVindoForm->responsavel;
-                $objetoEstudante->naturalidade = $dadosVindoForm->naturalidade;
-                $objetoEstudante->telefone = $dadosVindoForm->telefone;
-                $objetoEstudante->rg_responsavel = $dadosVindoForm->rg_responsavel;
-                $objetoEstudante->cpf_responsavel = $dadosVindoForm->cpf_responsavel;
-                $objetoEstudante->rg_responsavel_foto = $dadosVindoForm->rg_responsavel_foto;
-                $objetoEstudante->cpf_responsavel_foto = $dadosVindoForm->cpf_responsavel_foto;
-                $objetoEstudante->certidao_nascimento_aluno_foto = $dadosVindoForm->certidao_nascimento_aluno_foto;
-                $objetoEstudante->possuiCpf = $dadosVindoForm->possuiCpf;
-                $objetoEstudante->declaracao_matricula = $dadosVindoForm->declaracao_matricula;
-                $objetoEstudante->instituicao = $dadosVindoForm->instituicao;
-                $objetoEstudante->serie = $dadosVindoForm->serie;
-                $objetoEstudante->turno = $dadosVindoForm->turno;
-                $objetoEstudante->curso = $dadosVindoForm->curso;
-                $objetoEstudante->rg_aluno_foto =  $dadosVindoForm->rg_aluno_foto;
-                $objetoEstudante->cpf_aluno_foto = $dadosVindoForm->cpf_aluno_foto;
-                $objetoEstudante->rg_aluno = $dadosVindoForm->rg_aluno;
-                $objetoEstudante->cpf_aluno = $dadosVindoForm->cpf_aluno;
-
-                $objetoEstudante->save();
-                return view('estudante.protocolo', compact('objetoEstudante'));
-            }
         } catch (\Throwable $th) {
             dd($th);
             return view('layout.erro', compact('th'));
