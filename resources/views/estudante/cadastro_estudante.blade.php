@@ -114,7 +114,7 @@
                                 </div>
                                 <input type="text"  inputmode="numeric" class="form-control dados_aluno" name="telefone" id="telefone"
                                        data-inputmask="&quot;mask&quot;: &quot;(99) 99999-9999&quot;" data-mask=""
-                                       inputmode="verbatim" im-insert="true">
+                                       >
                             </div>
 
 
