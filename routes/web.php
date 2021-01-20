@@ -32,6 +32,8 @@ Route::get('status/pesquisar', 'StatusController@search')->name('status.pesquisa
 //ANDAMENTO
 Route::get('andamentos', 'AndamentoController@index')->name('andamentos');
 Route::get('andamentos/iniciar/{objetoEstudante}', 'AndamentoController@realizar_andamento')->name('andamento.iniciar');
+Route::post('andamentos/iniciar/efetuar', 'AndamentoController@novo_andamento')->name('andamento.novo');
+Route::post('andamentos/finalizar', 'AndamentoController@finalizar')->name('andamento.finalizar');
 Route::get('andamentos/pesquisar', 'AndamentoController@search')->name('andamentos.pesquisar');
 Route::get('andamentos/consulta', 'AndamentoController@consulta_situacao')->name('andamentos.consulta');
 Route::post('cpf/protocolo', 'AndamentoController@consultarSituacaoParametros')->name('cpf.protocolo');

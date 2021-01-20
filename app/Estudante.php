@@ -37,4 +37,8 @@ class Estudante extends Model
         'cidade'
 
     ];
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'id' );
+    }
 }

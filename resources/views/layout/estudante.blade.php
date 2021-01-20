@@ -145,8 +145,9 @@
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
+    <script src="/js/jquery.3.3.1.min.js" ></script>
     <script src="/js/app.js"></script>
-    <script src="/js/jquery.min.js"></script>
+
     <script src="/js/adminlte.js"></script>
 
     <!-- Jquery Validation -->
@@ -167,6 +168,9 @@
     <script src="/js/adminlte.min.js"></script>
     <script src="/js/demo.js"></script>
 
+    <!-- CALENDARIo-->
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script type="text/javascript">
         $(function() {

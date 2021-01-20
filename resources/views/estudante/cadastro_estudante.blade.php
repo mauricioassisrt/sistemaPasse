@@ -91,7 +91,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nome">Nome do Aluno</label>
-                            <input type="text" name="nomeAluno" class="form-control dados_aluno" id="nomeAluno"
+                            <input type="text" name="nome_aluno" class="form-control dados_aluno" id="nomeAluno"
                                    placeholder="Nome completo">
                         </div>
                         <div class="form-group">
@@ -159,24 +159,24 @@
 
                         <div class="col-md-12">
                             <label for="dados"> RG do Aluno <b class="text-danger">*</b> </label>
-                            <input type="text" class="form-control cpf_aluno" name="rgAluno" id="rgAluno"
+                            <input type="text" class="form-control cpf_aluno" name="rg_aluno" id="rgAluno"
                                    data-inputmask="&quot;mask&quot;: &quot; 99.999.999-9&quot;" data-mask=""
                                    inputmode="verbatim" im-insert="true">
                         </div>
                         <div class="col-md-12">
                             <label for="dados"> </label>
                             <label for="dados"> CPF do Aluno <b class="text-danger">*</b></label>
-                            <input type="text" class="form-control cpf_aluno" name="cpfAluno" id="cpfAluno"
+                            <input type="text" class="form-control cpf_aluno" name="cpf_aluno" id="cpfAluno"
                                    data-inputmask="&quot;mask&quot;: &quot; 999.999.999-99&quot;" data-mask=""
                                    inputmode="verbatim" im-insert="true">
                         </div>
                         <div class="col-md-12">
                             <label for=""> Foto do verso do RG <b class="text-danger">*</b></label><br>
-                            <input type="file" name="rgAlunoFoto" class="form-control cpf_aluno">
+                            <input type="file" name="rg_aluno_foto" class="form-control cpf_aluno">
                         </div>
                         <div class="col-md-12">
                             <label for=""> Foto do CPF <b class="text-danger">*</b> </label><br>
-                            <input type="file" name="cpfAlunoFoto" class="form-control cpf_aluno">
+                            <input type="file" name="cpf_aluno_foto" class="form-control cpf_aluno">
 
                         </div>
                         <br>
@@ -198,14 +198,14 @@
 
                         <div class="col-md-12">
                             <label for="dados"> RG do Responsável <b class="text-danger">*</b></label>
-                            <input type="text" class="form-control dados_responsavel" name="rgResponsavel"
-                                   data-inputmask="&quot;mask&quot;: &quot; 999.999.999-99&quot;" data-mask=""
+                            <input type="text" class="form-control dados_responsavel" name="rg_responsavel"
+                                   data-inputmask="&quot;mask&quot;: &quot; 99.999.999-9&quot;" data-mask=""
                                    inputmode="verbatim" im-insert="true">
                         </div>
                         <div class="col-md-12">
                             <label for="dados"> </label>
                             <label for="dados"> CPF do Responsável<b class="text-danger">*</b></label>
-                            <input type="text" class="form-control dados_responsavel" name="cpfResponsavel"
+                            <input type="text" class="form-control dados_responsavel" name="cpf_responsavel"
                                    id="cpfResponsavel"
                                    data-inputmask="&quot;mask&quot;: &quot; 999.999.999-99&quot;" data-mask=""
                                    inputmode="verbatim" im-insert="true" >
@@ -213,14 +213,14 @@
                         <div class="col-md-12">
                             <label for="dados"> Foto do RG do Responsável o Verso <b class="text-danger">*</b>
                             </label><br/>
-                            <input type="file" class="form-control dados_responsavel" name="rgResponsavelFoto"
+                            <input type="file" class="form-control dados_responsavel" name="rg_responsavel_foto"
                                    >
 
                         </div>
                         <div class="col-md-12">
                             <label for="dados"> Foto do CPF do Responsável <b
                                     class="text-danger">*</b></label><br/>
-                            <input type="file" class="form-control dados_responsavel" name="cpfResponsavelFoto"
+                            <input type="file" class="form-control dados_responsavel" name="cpf_responsavel_foto"
                                    >
 
                         </div>
@@ -228,7 +228,7 @@
                             <label for="dados"> Foto da Certidão de Nascimento do Aluno<b
                                     class="text-danger">*</b>
                             </label><br/>
-                            <input type="file" name="certidaoNascimentoAlunoFoto"
+                            <input type="file" name="certidao_nascimento_aluno_foto"
                                    class="form-control dados_responsavel"
                                    id="certidaoNascimento" >
 
@@ -262,7 +262,7 @@
                         <div class="form-group">
                             <label for="dados"> Foto do comprovante de residênca<b
                                     class="text-danger">*</b></label><br/>
-                            <input type="file" name="comprovanteResidencia" class="input_endereco" required>
+                            <input type="file" name="comprovante_residencia" class="input_endereco" required>
 
                         </div>
                         <div class="form-group">
@@ -278,7 +278,7 @@
                         </div>
                         <div class="form-group">
                             <label>Número da casa:<b class="text-danger">*</b></label></label>
-                            <input name="numeroCasa" type="text" class="form-control input_endereco" />
+                            <input name="numero_casa" type="text" class="form-control input_endereco" />
                         </div>
 
                         <div class="form-group">
@@ -331,7 +331,7 @@
                         <div class="form-group">
                             <label for="dados"> Foto da declaração de Matrícula <b
                                     class="text-danger">*</b></label><br/>
-                            <input type="file" name="declaracaoMatriculaFoto" required>
+                            <input type="file" name="declaracao_matricula" required>
 
                         </div>
                         <div class="form-group">
