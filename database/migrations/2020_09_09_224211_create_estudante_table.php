@@ -15,12 +15,14 @@ class CreateEstudanteTable extends Migration
     {
         Schema::create('estudantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('data_cadastro')->nullable($value = true);
+            $table->dateTime('data_cadastro')->nullable($value = true);
             $table->string('protocolo')->nullable($value = true);
             $table->string('nome_aluno')->nullable($value = true);
             $table->string('responsavel')->nullable($value = true);
             $table->string('naturalidade')->nullable($value = true);
             $table->string('telefone')->nullable($value = true);
+            $table->string('foto_aluno')->nullable($value = true);
+            $table->boolean('gratuidade')->nullable($value = true);
             $table->string('rg_aluno_foto')->nullable($value = true);
             $table->string('cpf_aluno_foto')->nullable($value = true);
             $table->string('rg_aluno')->nullable($value = true);

@@ -58,7 +58,7 @@
                                     <tbody>
                                         @foreach ($objetoEstudantes as $estudante)
                                         <tr role="row" class="odd">
-                                            <td tabindex="0" class="sorting_1">{{$estudante->data_cadastro}}</td>
+                                            <td tabindex="0" class="sorting_1">{{date('d/m/Y H:i:s', strtotime($estudante->data_cadastro)) }}</td>
                                             <td>{{$estudante->nome_aluno}}</td>
                                             <td>{{$estudante->instituicao}}</td>
                                             <td>{{$estudante->curso}}</td>
@@ -73,7 +73,7 @@
                                                         class="fa fa-plug "></i>
                                                 </a>
 
-                                                @if($estudante->possuiCpf==0)
+                                                @if($estudante->possuiCpf=='false')
 
                                                 <a href="./{{$estudante->rg_responsavel_foto}}" class="btn btn-info"
                                                     title=" RG Responsável ">
@@ -89,7 +89,7 @@
 
                                                 </a>
 
-                                                <a href="./{{$estudante->certidao_nascimento_foto}}"
+                                                <a href="./{{$estudante->certidao_nascimento_aluno_foto}}"
                                                     class="btn btn-secondary" title="Certidão de nascimento ">
                                                     <i class="fa fa-baby-carriage ">
 
@@ -379,10 +379,10 @@
 
 
                                                                 <div class="modal-footer justify-content-between">
-                                                                    <button type="button" class="btn btn-default"
-                                                                        data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save
-                                                                        changes</button>
+                                                                    <button type="button" class="btn btn-success"
+                                                                        data-dismiss="modal">Fechar</button>
+{{--                                                                    <button type="button" class="btn btn-primary">Save--}}
+{{--                                                                        changes</button>--}}
                                                                 </div>
                                                             </div>
 

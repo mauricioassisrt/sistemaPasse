@@ -172,6 +172,7 @@
     <script src="/js/moment.min.js"></script>
     <script src="/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <script src="/js/modulos/estudanteCadastro.js"></script>
     <script type="text/javascript">
         $(function() {
             //Initialize Select2 Elements

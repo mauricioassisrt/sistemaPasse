@@ -54,18 +54,20 @@ class EstudanteController extends Controller
 
 
             } else if ($request->hasFile('rg_responsavel_foto') && $request->hasFile('cpf_responsavel_foto') && $request->hasFile('certidao_nascimento_aluno_foto')) {
+
                 $cpfFoto = $request->file('cpf_responsavel_foto');
                 $rgFoto = $request->file('rg_responsavel_foto');
                 $certidao = $request->file('certidao_nascimento_aluno_foto');
               //  dd('no else');
                 // $numero = rand(1111, 9999);
-                $dir = "alunos" . '/' . $request->cpfResponsavel;
+                $dir = "alunos" . '/' . $request->cpf_responsavel;
                 $extencaoCpf = $cpfFoto->guessClientExtension();
                 $extencaoRg = $rgFoto->guessClientExtension();
                 $extencaoCertidao = $certidao->guessClientExtension();
                 $arquivoRgMover = $request->nome_aluno . "-RG-responsavel" . "." . $extencaoRg;
                 $arquivoCpfMover = $request->nome_aluno . "-CPF-responsavel-" . "." . $extencaoCpf;
                 $arquivoCertidaoMover = $request->nome_aluno . "-CERTIDAO-responsavel" . "." . $extencaoCertidao;
+
                 $rgFoto->move($dir, $arquivoRgMover);
                 $cpfFoto->move($dir, $arquivoCpfMover);
                 $certidao->move($dir, $arquivoCertidaoMover);
@@ -139,15 +141,17 @@ class EstudanteController extends Controller
 
             if(!empty($status->count())){
                 $objeto_andamento['status_id'] = $status->first()->id;
-                $objeto_andamento['estudante_id'] = $objetoEstudante->first()->id;
+                $objeto_andamento['estudante_id'] = $objetoEstudante->id;
                 $objeto_andamento['data'] = date('Y-m-d H:i:s');
                 $objeto_andamento['detalhes']= "Andamento iniciado ";
+
                 Andamento::create($objeto_andamento);
 
 
-                $andamentos = Andamento::where('estudante_id', $objetoEstudante->first()->id )->first();
+                $andamentos = Andamento::where('estudante_id', $objetoEstudante->id)->orderBy('data', 'DESC')->paginate(10);
 
                 return view('andamentos.detalhes', compact('objetoEstudante', 'status', 'andamentos'));
+
 
             }else{
                 $objeto_status['nome'] = "Andamento Realizado ";
@@ -162,7 +166,8 @@ class EstudanteController extends Controller
                 dd($objeto_andamento);
                 Andamento::create($objeto_andamento);
 
-                $andamentos = Andamento::where('estudante_id', $objetoEstudante->id )->first();
+                $andamentos = Andamento::where('estudante_id', $objetoEstudante->id)->orderBy('data', 'DESC')->paginate(10);
+
                 return view('andamentos.detalhes', compact('objetoEstudante', 'status', 'andamentos'));
             }
 

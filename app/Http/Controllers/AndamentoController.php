@@ -20,7 +20,7 @@ class AndamentoController extends Controller
     {
         try {
             if (Auth::check()) {
-                $objetoEstudantes = Estudante::paginate(15);
+                $objetoEstudantes = Estudante::paginate(10);
 
                 return view('andamentos.index', compact('objetoEstudantes'));
             } else {
