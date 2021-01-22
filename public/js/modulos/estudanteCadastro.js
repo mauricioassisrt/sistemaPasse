@@ -8,8 +8,8 @@ $(function () {
         }).get();
 
         if (vazios.length) {
-            $(vazios).addClass('vazio');
-            alert("Todos os campos devem ser preenchidos.");
+            $(vazios).addClass('form-control is-invalid');
+            $('#dialog_campos_preencher').modal('show');
             return false;
         } else {
             var valor_radio_cpf = $('input[name=possuiCpf]:checked', '#confirma_cpf')
@@ -24,6 +24,9 @@ $(function () {
                 //  alert('no else' + valor_radio_cpf);
                 $("#dados_aluno").hide();
                 $('#cpf_responsavel').show();
+            }else{
+                $(vazios).addClass('custom-control-input custom-control-input-danger');
+                $('#dialog_campos_preencher').modal('show');
             }
         }
     });
@@ -36,8 +39,8 @@ $(function () {
         }).get();
         // alert("Vazios");
         if (vazios.length) {
-            //$(vazios).addClass('vazio');
-            alert("Todos os campos devem ser preenchidos.");
+            $(vazios).addClass('form-control is-invalid');
+            $('#dialog_campos_preencher').modal('show');
             return false;
         } else {
             // alert("Eureka1");
@@ -48,6 +51,21 @@ $(function () {
         }
     });
 });
+$(function () {
+    $("input[type='file']").on("change", function () {
+
+        if(this.files[0].size > 500000) {
+
+            if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+                alert('invalid extension!');
+            }
+            $('#dialog_arquivo_grande').modal('show');
+            // $("#dialog").dialog("open");
+            // return false;
+            $(this).val('');
+        }
+    });
+})
 //verifica dados do aluno
 $(function () {
     $("#form_cadastra_cpf_aluno").click(function () {
@@ -56,8 +74,8 @@ $(function () {
         }).get();
 
         if (vazios.length) {
-            $(vazios).addClass('vazio');
-            alert("Todos os campos devem ser preenchidos.");
+            $(vazios).addClass('form-control is-invalid');
+            $('#dialog_campos_preencher').modal('show');
             return false;
         } else {
             //alert("Eureka1");
@@ -76,8 +94,8 @@ $(function () {
         }).get();
 
         if (vazios.length) {
-
-            alert("Todos os campos do endereço que devem ser preenchidos!!!!");
+            $(vazios).addClass('form-control is-invalid');
+            $('#dialog_campos_preencher').modal('show');
             return false;
         } else {
             // alert("Eureka1");

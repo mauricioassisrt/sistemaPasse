@@ -84,44 +84,6 @@
                     @csrf
                     <div id="dados_aluno">
 
-                        <div class="callout callout-danger">
-                            <h5>Atenção </h5>
-
-                            <p><b> Nesta tela todos os campos são obrigatórios </b></p>
-                        </div>
-                        <div class="form-group">
-                            <label for="nome">Nome do Aluno</label>
-                            <input type="text" name="nome_aluno" class="form-control dados_aluno" id="nome_aluno"
-                                   placeholder="Nome completo">
-                        </div>
-                        <div class="form-group">
-                            <label for="responsavel">Nome do Responsável </label>
-                            <input type="text" name="responsavel" class="form-control dados_aluno" id="responsavel"
-                                   placeholder="Nome completo ">
-                        </div>
-                        <div class="form-group">
-                            <label for="naturalidade">Naturalidade</label>
-                            <input type="text" name="naturalidade" class="form-control dados_aluno"
-                                   id="naturalidade"
-                                   placeholder="Paranavaí ">
-                        </div>
-                        <div class="form-group">
-                            <label>Telefone de contato :</label>
-
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                </div>
-                                <input type="text"  inputmode="numeric" class="form-control dados_aluno" name="telefone" id="telefone"
-                                       data-inputmask="&quot;mask&quot;: &quot;(99) 99999-9999&quot;" data-mask=""
-                                       >
-                            </div>
-
-
-                            <!-- /.input group -->
-                        </div>
-
-
                         <!--------------------------------verifica cpf  --------------!>
 
                         <div id="confirma_cpf">
@@ -130,6 +92,7 @@
                                 </button>
                                 <h5><i class="icon fas fa-info"></i> Atenção!</h5>
                                 Caso não possua CPF clique em não, caso possua clique em sim!
+
                             </div>
                             <div class="custom-control custom-radio">
                                 <input class="custom-control-input dados_aluno" type="radio" id="possuiCpf"
@@ -142,13 +105,47 @@
                                 <label for="naoPossuiCPF" class="custom-control-label">Não possui CPF </label>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="nome">Nome do Aluno<b class="text-danger">*</b></label>
+                            <input type="text" name="nome_aluno" class="form-control dados_aluno" id="nome_aluno"
+                                   placeholder="Nome completo sem abreviação ">
+                        </div>
+                        <div class="form-group">
+                            <label for="responsavel">Nome do Responsável<b class="text-danger">*</b> </label>
+                            <input type="text" name="responsavel" class="form-control dados_aluno" id="responsavel"
+                                   placeholder="Digite  ">
+                        </div>
+                        <div class="form-group">
+                            <label for="naturalidade">Naturalidade<b class="text-danger">*</b></label>
+                            <input type="text" name="naturalidade" class="form-control dados_aluno"
+                                   id="naturalidade"
+                                   placeholder="Cidade de origem ">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone de contato <b class="text-danger">*</b></label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" inputmode="numeric" class="form-control dados_aluno" name="telefone"
+                                       id="telefone"
+                                       data-inputmask="&quot;mask&quot;: &quot;(99) 99999-9999&quot;" data-mask=""
+                                >
+                            </div>
+
+
+                            <!-- /.input group -->
+                        </div>
+
+
                         <div class="card-footer" id="footer">
 
-                            <a href="" class="btn btn-success btn-lg "> <i class="fa fa-bus pull-right"></i>
+                            <a href="" class="btn btn-primary btn-lg "> <i class="fa fa-home pull-right"></i>
                                 Inicio </a>
                             <a href="#" class="btn btn-success btn-lg " id="form_cadastra_dados_aluno"> <i
-                                    class="fa fa-bus pull-right"></i>
-                                Próximo <i class="fas fa-long-arrow-alt-right"></i></a>
+                                    class="fa fa-forward pull-right"></i>
+                                Próximo </a>
 
                         </div>
 
@@ -182,13 +179,13 @@
                         <br>
                         <div class="card-footer">
 
-                            <a href="#" class="btn btn-success btn-lg " id="btndadosAluno"> <i
-                                    class="fa fa-bus pull-right"></i>
+                            <a href="#" class="btn btn-primary btn-lg " id="btndadosAluno"> <i
+                                    class="fa fa-backward pull-right"></i>
                                 Voltar </a>
 
-                            <a href="#" class="btn btn-success btn-lg " id="form_cadastra_cpf_aluno"> <i
-                                    class="fas fa-long-arrow-alt-right"></i>
-                                Próximo </a>
+                            <a href="#" class="btn btn-success btn-lg " id="form_cadastra_cpf_aluno">
+                                Próximo <i
+                                    class="fas fa-forward "></i> </a>
                         </div>
                     </div>
                     <!--------------------------------FIM cpf do aluno  -------------------------!>
@@ -208,20 +205,20 @@
                             <input type="text" class="form-control dados_responsavel" name="cpf_responsavel"
                                    id="cpf_responsavel"
                                    data-inputmask="&quot;mask&quot;: &quot; 999.999.999-99&quot;" data-mask=""
-                                   inputmode="verbatim" im-insert="true" >
+                                   inputmode="verbatim" im-insert="true">
                         </div>
                         <div class="col-md-12">
                             <label for="dados"> Foto do RG do Responsável o Verso <b class="text-danger">*</b>
                             </label><br/>
                             <input type="file" class="form-control dados_responsavel" name="rg_responsavel_foto"
-                                   >
+                            >
 
                         </div>
                         <div class="col-md-12">
                             <label for="dados"> Foto do CPF do Responsável <b
                                     class="text-danger">*</b></label><br/>
                             <input type="file" class="form-control dados_responsavel" name="cpf_responsavel_foto"
-                                   >
+                            >
 
                         </div>
                         <div class="col-md-12">
@@ -230,18 +227,19 @@
                             </label><br/>
                             <input type="file" name="certidao_nascimento_aluno_foto"
                                    class="form-control dados_responsavel"
-                                   id="certidaoNascimento" >
+                                   id="certidaoNascimento">
 
                         </div>
                         <div class="card-footer">
 
-                            <a href="#" class="btn btn-success btn-lg " id="btndadosAluno_tela_responsavel"> <i
-                                    class="fa fa-bus pull-right"></i>
+                            <a href="#" class="btn btn-primary btn-lg " id="btndadosAluno_tela_responsavel">  <i
+                                    class="fa fa-backward pull-right"></i>
                                 Voltar </a>
 
                             <a href="#" class="btn btn-success btn-lg " id="form_cadastra_dados_responsavel"
-                            > <i class="fas fa-long-arrow-alt-right"></i>
-                                Próximo </a>
+                            >
+                                Próximo <i
+                                    class="fas fa-forward "></i> </a>
                         </div>
                     </div>
                     <!--------------------------------Fim dados do responsavel   -------------------------!>
@@ -274,38 +272,39 @@
                         <div class="form-group">
                             <label>Rua:<b class="text-danger">*</b></label></label>
                             <input name="rua" type="text" id="rua" size="60" class="form-control input_endereco"
-                                   />
+                            />
                         </div>
                         <div class="form-group">
                             <label>Número da casa:<b class="text-danger">*</b></label></label>
-                            <input name="numero_casa" type="text" class="form-control input_endereco" />
+                            <input name="numero_casa" type="text" class="form-control input_endereco"/>
                         </div>
 
                         <div class="form-group">
                             <label>Bairro:<b class="text-danger">*</b></label></label>
                             <input class="form-control input_endereco" name="bairro" type="text" id="bairro" size="40"
-                                   class="form-control" />
+                                   class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label>Cidade:<b class="text-danger">*</b></label></label>
                             <input name="cidade" type="text" id="cidade" size="40" class="form-control input_endereco"
-                                   />
+                            />
                         </div>
                         <div class="card-footer" id="footer-endereco">
 
-                            <a href="#" class="btn btn-success btn-lg " id="btn_voltarcpf_responsavel_tela"
+                            <a href="#" class="btn btn-primary btn-lg " id="btn_voltarcpf_responsavel_tela"
                                style="display: none"> <i
-                                    class="fa fa-bus pull-right"></i>
-                                Voltar para dados do responsável </a>
-                            <a href="#" class="btn btn-success btn-lg " id="btn_voltar_dados_aluno"
+                                    class="fa fa-backward pull-right"></i>
+                                Voltar  </a>
+                            <a href="#" class="btn btn-primary btn-lg " id="btn_voltar_dados_aluno"
                                style="display: none">
                                 <i
-                                    class="fa fa-bus pull-right"></i>
-                                Voltar para dados do Aluno </a>
+                                    class="fa fa-backward pull-right"></i>
+                                Voltar  </a>
 
                             <a href="#" class="btn btn-success btn-lg " id="form_cadastra_endereco"
-                            > <i class="fas fa-long-arrow-alt-right"></i>
-                                Próximo </a>
+                            >
+                                Próximo <i
+                                    class="fas fa-forward "></i> </a>
                         </div>
                     </div>
                     <!--------------------------------FIM ENDERECO   -------------------------!>
@@ -399,25 +398,86 @@
 
                         <div class="card-footer">
 
-                            <a href="#" class="btn btn-success btn-lg " id="btn_voltar_endereco"> <i
-                                    class="fa fa-bus pull-right"></i>
-                                Voltar </a>
+                            <a href="#" class="btn btn-primary btn-lg " id="btn_voltar_endereco">
+                                <i
+                                    class="fa fa-backward pull-right"></i> Voltar </a>
 
-                            <button type="submit" class="btn btn-lg btn-primary"><i
-                                    class="fas fa-long-arrow-alt-right"></i>
+                            <button type="submit" class="btn btn-lg btn-success"><i
+                                    class="fas fa-save"></i>
                                 Emitir protocolo
                             </button>
                         </div>
                     </div>
+                    <!-- Modal campos semm preencher  -->
+                    <div class="modal fade" id="dialog_campos_preencher" style="display: none;" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-danger">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Atenção </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Existem campos sem preenchimento!!!</p>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar
+                                    </button>
 
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+                    <!-- /.modal-dialog -->
+                    <!-- Modal arquivo grande -->
+                    <div class="modal fade" id="dialog_arquivo_grande" style="display: none;"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content ">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">ATENÇÃO </h4>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                                        </button>
+                                        <h5><i class="icon fas fa-ban"></i> ATENÇÃO !</h5>
+                                        O arquivo é muito grande, tente enviar um arquivo em outro formato ou menor!
+                                    </div>
+
+
+                                </div>
+
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-primary"
+                                            data-dismiss="modal">
+                                        Fechar
+                                    </button>
+
+                                </div>
+
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
                     <!--------------------------------------FIM ESCOLA-------------------------------------->
                 </form>
+
             </div>
         </div>
     </div>
 
 
-    <script src="">
-
-    </script>
 @endsection
