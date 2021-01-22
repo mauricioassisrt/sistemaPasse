@@ -54,7 +54,7 @@ $(function () {
 $(function () {
     $("input[type='file']").on("change", function () {
 
-        if (this.files[0].size > 500000) {
+        if (this.files[0].size > 1000000) {
             $('#dialog_arquivo_grande').modal('show');
             $(this).val('');
         }
