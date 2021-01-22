@@ -24,7 +24,7 @@ $(function () {
                 //  alert('no else' + valor_radio_cpf);
                 $("#dados_aluno").hide();
                 $('#cpf_responsavel').show();
-            }else{
+            } else {
                 $(vazios).addClass('custom-control-input custom-control-input-danger');
                 $('#dialog_campos_preencher').modal('show');
             }
@@ -54,14 +54,8 @@ $(function () {
 $(function () {
     $("input[type='file']").on("change", function () {
 
-        if(this.files[0].size > 500000) {
-
-            if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
-                alert('invalid extension!');
-            }
+        if (this.files[0].size > 500000) {
             $('#dialog_arquivo_grande').modal('show');
-            // $("#dialog").dialog("open");
-            // return false;
             $(this).val('');
         }
     });
