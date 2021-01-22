@@ -7,10 +7,10 @@
 
 </script>
 @section('content')
-    <div class="row">
+
         <!-- left column -->
         <div class="container-fluid">
-            <div class="col-md-12">
+
                 <div class="card card-light-dark">
                     <div class="card-header">
                         <div class=" row">
@@ -94,9 +94,8 @@
                     </div>
                 </div>
 
-            </div>
+
         </div>
-    </div>
 
 
 @endsection

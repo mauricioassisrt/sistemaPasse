@@ -175,6 +175,7 @@
     <script src="/js/modulos/estudanteCadastro.js"></script>
     <script type="text/javascript">
         $(function() {
+
             //Initialize Select2 Elements
             $('.select2').select2()
 

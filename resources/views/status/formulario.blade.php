@@ -1,10 +1,10 @@
 @extends('layout.estudante')
 
 @section('content')
-    <div class="row">
+
         <!-- left column -->
         <div class="container-fluid">
-            <div class="col-md-12">
+
                 <div class="card card-light-dark">
                     <div class="card-header">
                         <div class=" row">
@@ -61,10 +61,9 @@
                     </div>
                     <!-- /.card-body -->
 
-                </div>
 
-            </div>
-        </div>
+
+
     </div>
 
 
