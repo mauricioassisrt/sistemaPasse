@@ -17,6 +17,8 @@ class Estudante extends Model
         'rg_aluno_foto',
         'cpf_aluno_foto',
         'rg_aluno',
+        'gratuidade',
+        'cartao_entregue',
         'cpf_aluno',
         'rg_responsavel',
         'cpf_responsavel',

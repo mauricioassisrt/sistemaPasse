@@ -76,11 +76,34 @@
                                     <p>Home </p>
                                 </a>
                             </li>
+
                             <li class="nav-item">
-                                <a href="{{ route('andamentos') }}" class="nav-link active">
+                                <a href="#" class="nav-link active">
                                     <i class="fas fa-user-graduate"></i>
-                                    <p>Cadastros Realizados </p>
+                                    <p>Cadastros  </p>
                                 </a>
+
+                                <ul class="nav nav-treeview" style="display: none;">
+                                    <li class="nav-item">
+                                        <a href="{{ route('andamentos') }}" class="nav-link">
+                                            <i class="fas fa-unlock nav-icon"></i>
+                                            <p>Aguardando liberação </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('estudantes.sem.cartao') }}" class="nav-link">
+                                            <i class="fas fa-folder-minus nav-icon"></i>
+                                            <p>Falta retirar o cartão </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('estudantes.com.cartao') }}" class="nav-link">
+                                            <i class="fas fa-address-card nav-icon"></i>
+                                            <p>Estudantes com cartão </p>
+                                        </a>
+                                    </li>
+
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('status') }}" class="nav-link active">

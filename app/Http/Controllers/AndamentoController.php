@@ -20,11 +20,47 @@ class AndamentoController extends Controller
     {
         try {
             if (Auth::check()) {
-                $objetoEstudantes = Estudante::paginate(10);
+                $objetoEstudantes =Estudante::where([['gratuidade', '=', null ]])->orderBy('data_cadastro', 'DESC')->paginate(10);
 
                 return view('andamentos.index', compact('objetoEstudantes'));
             } else {
-                dd('user nao autenticado');
+               return  redirect('login');
+            }
+
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+    /*
+     * ESTUDANTES NOS QUAIS JÁ FORAM RETIRAR O CARTAO NO TERMINAL RODOVIARIO
+     */
+    public function estudantes_com_cartao()
+    {
+        try {
+            if (Auth::check()) {
+                $objetoEstudantes =Estudante::where([['cartao_entregue', '=', true ]])->orderBy('data_cadastro', 'DESC')->paginate(10);
+
+                return view('andamentos.estudantes_com_cartao', compact('objetoEstudantes'));
+            } else {
+                return  redirect('login');
+            }
+
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+    /*
+     * ESTUDANTES NOS QUAIS JÁ POSSUEM O PERFIL AVALIADO E NÃO VIERAM RETIRAR O CARTÃO
+     */
+    public function estudantes_sem_cartao()
+    {
+        try {
+            if (Auth::check()) {
+                $objetoEstudantes =Estudante::where([['cartao_entregue', '=', null ]])->orderBy('data_cadastro', 'DESC')->paginate(10);
+
+                return view('andamentos.estudantes_sem_cartao', compact('objetoEstudantes'));
+            } else {
+                return  redirect('login');
             }
 
         } catch (\Throwable $th) {
@@ -32,76 +68,13 @@ class AndamentoController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Andamento $andamento
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Andamento $andamento)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Andamento $andamento
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Andamento $andamento)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Andamento $andamento
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Andamento $andamento)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Andamento $andamento
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Andamento $andamento)
-    {
-        //
-    }
 
     public function search(Request $request)
     {
     }
-
+    /*
+     * DETALHES DO PERFIL DO ESTUDANTE PARA REALIZAR ANDAMENTOS
+     */
     public function consulta_situacao(Request $request)
     {
         return view("andamentos.detalhes");
@@ -192,8 +165,29 @@ class AndamentoController extends Controller
         }
     }
 
-    public function finalizar(Request $request)
+    public function finalizar(Request $request, Estudante $objetoEstudante)
     {
-        dd('no finalizar');
+        try {
+            $objeto_estudante = $request->all();
+            $objetoEstudante->update($objeto_estudante);
+            return redirect('andamentos');
+        }catch (\Throwable $th){
+            dd('error');
+        }
     }
+
+    public function entregar_cartao(Request $request, Estudante $objetoEstudante)
+    {
+        try {
+
+            $objeto_estudante = $request->all();
+            $objetoEstudante->update($objeto_estudante);
+            return redirect('estudanteRetirarCartao');
+        }catch (\Throwable $th){
+            dd('error');
+        }
+    }
+
+
+
 }

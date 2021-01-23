@@ -10,11 +10,11 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-12">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <h3>{{$total_cadastros}}</h3>
 
                                     <p>Total de Solicitações </p>
                                 </div>
@@ -25,13 +25,13 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-12">
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                    <h3>{{$inteira}}<sup style="font-size: 20px"></sup></h3>
 
-                                    <p>Quantidade livre</p>
+                                    <p>Quantidade livre/100%</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-lock-open"></i>
@@ -40,26 +40,61 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-12">
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{$meia}}</h3>
 
-                                    <p>Quantidade com meia </p>
+                                    <p>Quantidade com meia/ 50%</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-sort-numeric-down"></i>
+                                    <i class="fas fa-percentage"></i>
                                 </div>
 
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+
+
+                        <!-- ./col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-gradient-success">
+                                <div class="inner">
+                                    <h3>{{$retirou_cartao}}</h3>
+
+                                    <p>Retirou o Cartão </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-gradient-danger">
+                                <div class="inner">
+                                    <h3>{{$total_cadastros - $retirou_cartao}}</h3>
+
+                                    <p>Falta retirar o Cartão </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-12">
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>65</h3>
+                                    <h3>{{$aguardando_liberacao}}</h3>
 
                                     <p>Aguardando liberação </p>
                                 </div>
@@ -69,7 +104,6 @@
 
                             </div>
                         </div>
-                        <!-- ./col -->
                     </div>
                 </div>
             </div>

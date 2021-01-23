@@ -6,7 +6,7 @@
 
         <div class="card card-light-dark">
             <div class="card-header">
-                <h2 class="card-title"><strong> <i class="fas fa-tachometer-alt"></i> Cadastros aguardando liberação
+                <h2 class="card-title"><strong> <i class="fas fa-tachometer-alt"></i> Estudantes com cartão
                     </strong></h2>
             </div>
 

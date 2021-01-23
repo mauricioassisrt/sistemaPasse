@@ -32,7 +32,7 @@ class EstudanteController extends Controller
                 $cpfFoto = $request->file('cpf_aluno_foto');
                 $rgFoto = $request->file('rg_aluno_foto');
                 //define o diretorio que sera a pasta public/alunos/cpf
-                $dir = "alunos" . '/' . $request->cpfAluno;
+                $dir = "alunos" . '/' . $request->cpf_aluno;
                 //pega o tipo de extensão do arquivo
                 $extencaoCpf = $cpfFoto->guessClientExtension();
                 $extencaoRg = $rgFoto->guessClientExtension();
@@ -92,10 +92,10 @@ class EstudanteController extends Controller
 
                 if ($request->possuiCpf == 'true') {
                     //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
-                    $dir = "alunos" . '/' . $request->cpf_responsavel;
+                    $dir = "alunos" . '/' . $request->cpf_aluno;
                 } else {
                     //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
-                    $dir = "alunos" . '/' . $request->cpf_aluno;
+                    $dir = "alunos" . '/' . $request->cpf_responsavel ;
 
                 }
 
@@ -115,10 +115,10 @@ class EstudanteController extends Controller
                 $comprovanteResidencia = $request->file('comprovante_residencia');
                 if ($request->possuiCpf == 'true') {
                     //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
-                    $dir = "alunos" . '/' . $request->cpf_responsavel;
+                    $dir = "alunos" . '/' . $request->cpf_aluno;
                 } else {
                     //cria os parametros de url, que é o seguinte public/alunos/cpf/docs
-                    $dir = "alunos" . '/' . $request->cpf_aluno;
+                    $dir = "alunos" . '/' . $request->cpf_responsavel;
                 }
                 //pega a extenção
                 $extencao = $comprovanteResidencia->guessClientExtension();
@@ -140,6 +140,7 @@ class EstudanteController extends Controller
             $status = Status::all();
 
             if(!empty($status->count())){
+
                 $objeto_andamento['status_id'] = $status->first()->id;
                 $objeto_andamento['estudante_id'] = $objetoEstudante->id;
                 $objeto_andamento['data'] = date('Y-m-d H:i:s');
@@ -156,14 +157,15 @@ class EstudanteController extends Controller
             }else{
                 $objeto_status['nome'] = "Andamento Realizado ";
                 $objeto_status['descricao']= "Primeiro andamento realizado ";
-                $objeto_status->save();
+                Status::create($objeto_status);
+
 
                 $objeto_andamento['status_id'] = $status->first();
                 $objeto_andamento['estudante_id'] = $objetoEstudante->id;
 
                 $objeto_andamento['data']= date('Y-m-d H:i:s');
                 $objeto_andamento['descricao']= "Andamento iniciado ";
-                dd($objeto_andamento);
+
                 Andamento::create($objeto_andamento);
 
                 $andamentos = Andamento::where('estudante_id', $objetoEstudante->id)->orderBy('data', 'DESC')->paginate(10);

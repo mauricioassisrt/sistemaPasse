@@ -51,7 +51,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Status </th>
-                                        <th>Descrição </th>
+
                                         <th>Detalhes</th>
                                     </tr>
                                 </thead>
@@ -66,9 +66,7 @@
                                             <td>
                                                 {{ $statu->nome }}
                                             </td>
-                                            <td>
-                                                {{ $statu->descricao }}
-                                            </td>
+
                                             <td>
                                                 <a href="{{ url('status/edit/' . $statu->id) }}"
                                                     class="btn btn-primary"><span class="glyphicon glyphicon-pencil">
