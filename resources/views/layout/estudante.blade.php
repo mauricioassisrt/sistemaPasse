@@ -80,7 +80,7 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link active">
                                     <i class="fas fa-user-graduate"></i>
-                                    <p>Cadastros  </p>
+                                    <p>Estudantes  <i class="fas fa-angle-left right"></i></p>
                                 </a>
 
                                 <ul class="nav nav-treeview" style="display: none;">
@@ -99,7 +99,7 @@
                                     <li class="nav-item">
                                         <a href="{{ route('estudantes.com.cartao') }}" class="nav-link">
                                             <i class="fas fa-address-card nav-icon"></i>
-                                            <p>Estudantes com cartão </p>
+                                            <p>Com cartão </p>
                                         </a>
                                     </li>
 
@@ -109,6 +109,12 @@
                                 <a href="{{ route('status') }}" class="nav-link active">
                                     <i class="fas fa-info nav-icon"></i>
                                     <p>Status</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('usuarios') }}" class="nav-link active">
+                                    <i class="fas fa-people-arrows nav-icon"></i>
+                                    <p>Usuários</p>
                                 </a>
                             </li>
                         @endif

@@ -264,28 +264,72 @@
 
                     <div class="tab-pane fade active show" id="custom-tabs-three-messages" role="tabpanel"
                          aria-labelledby="custom-tabs-three-messages-tab">
-                        
+
+                        @if($objetoEstudante->gratuidade == true )
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-check"></i> Parabéns!</h5>
+                                O seu passe foi liberado com 100% de gratuidade no ano de {{ date('Y') }}
+                            </div>
+                        @elseif($objetoEstudante->gratuidade == !null)
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-check"></i> Parabéns!</h5>
+                                O seu passe foi liberado com 50% de gratuidade no ano de {{ date('Y') }}
+                            </div>
+                        @elseif($objetoEstudante->gratuidade== null)
+                            <div class="alert alert-info alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-info"></i> Atenção!</h5>
+                                Seu cadastro encontra-se em análise, favor verificar os andamentos!.
+                            </div>
+                        @endif
+
+
+
                         @if(Auth::check())
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#modal-andamento">
-                                Realizar Andamento <i class="fa fa-forward ">
+                            @if($objetoEstudante->cartao_entregue == null)
+                                <div class="alert alert-danger alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                                    </button>
+                                    <h5><i class="icon fas fa-ban"></i> Atenção!</h5>
+                                    Falta realizar a entregua deste cartão para o estudante!
+                                </div>
+                            @elseif($objetoEstudante->cartao_entregue == true)
+                                <div class="alert alert-info alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                                    </button>
+                                    <h5><i class="icon fas fa-info"></i> Atenção!</h5>
+                                    Cartão entregue ao estudante
+                                </div>
+                            @endif
+                            <div class="row">
+                                <div class="col-lg-4 col-12">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#modal-andamento">
+                                        Realizar Andamento <i class="fa fa-forward ">
 
-                                </i>
-                            </button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#modal-gratuidade">
-                                Definir gratuidade <i class="fa fa-money-bill-alt ">
+                                        </i>
+                                    </button>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#modal-gratuidade">
+                                        Definir gratuidade <i class="fa fa-money-bill-alt ">
 
-                                </i>
-                            </button>
-                            <button type="button" class="btn btn-success" data-toggle="modal"
-                                    data-target="#modal-entregar">
-                                Entregar cartão? <i class="fa fa-check-square ">
+                                        </i>
+                                    </button>
+                                </div>
+                                <div class="col-lg-4 col-12">
+                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                            data-target="#modal-entregar">
+                                        Entregar cartão? <i class="fa fa-check-square ">
 
-                                </i>
-                            </button>
-
+                                        </i>
+                                    </button>
+                                </div>
+                            </div>
                         @endif
                         <hr>
 
@@ -435,7 +479,8 @@
                                                         class="fa fa-times "></i>
                                                     Fechar
                                                 </button>
-                                                <button type="submit" class="btn btn-primary"><i class="fa fa-save "></i> Salvar
+                                                <button type="submit" class="btn btn-primary"><i
+                                                        class="fa fa-save "></i> Salvar
                                                 </button>
                                             </div>
                                         </form>
@@ -474,7 +519,9 @@
                                                         class="fa fa-times "></i>
                                                     Fechar
                                                 </button>
-                                                <button type="submit" class="btn btn-primary"><i class="fa fa-check-square "></i> Sim</button>
+                                                <button type="submit" class="btn btn-primary"><i
+                                                        class="fa fa-check-square "></i> Sim
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
