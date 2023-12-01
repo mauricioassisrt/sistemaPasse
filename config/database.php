@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql-externo'),
+    'default' => env('DB_CONNECTION', 'mysql-local'),
 
     /*
     |--------------------------------------------------------------------------
